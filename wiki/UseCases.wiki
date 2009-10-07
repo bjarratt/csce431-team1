@@ -21,48 +21,48 @@ Users can view details (year, make, model, VIN, etc) of a specific vehicle.
 `[`Vehicles anywhere, or just within the employee's dealership?`]`
 
 ==Edit Vehicle Details==
-Actors: Manager
+Actors: Manager<br />
 The manager of a dealership can edit the details of a vehicle in his/her dealership.
 
 ==Mark Vehicle as Pending Sale==
-Actors: Salesperson
+Actors: Salesperson<br />
 Salespeople can mark a vehicle as a Pending Sale, along with the negotiated price, taking it out of sellable inventory temporarily.
 
-[Should these expire if not finalized by a manager?]
+`[`Should these expire if not finalized by a manager?`]`
 
 ==Finalize Vehicle Sale==
-Actors: Manager
+Actors: Manager<br />
 The manager of a dealership can finalize any Pending Sale at his/her dealership, automatically removing the vehicle from inventory.
 
 ==Add Dealership to System==
-Actors: Admin
+Actors: Admin<br />
 A system administrator can add dealerships to the database.
 
 ==Remove Dealership from System==
-Actors: Admin
+Actors: Admin<br />
 A system administrator can remove dealerships from the database.
 
-[Perhaps keep the dealership in the system, but mark as 'closed,' for historical record?]
+`[`Perhaps keep the dealership in the system, but mark as 'closed,' for historical record?`]`
 
 ==Edit Dealership Details==
-Actors: Admin
+Actors: Admin<br />
 A system administrator can change the details of a dealership (address, description, website...)
 
 ==Add Employee==
-Actors: Admin
+Actors: Admin<br />
 A system administrator can add employees to the database.
 
 ==Remove Employee==
-[Rather than removing employees, they should simply have all of their PositionAssignments closed.]
+`[`Rather than removing employees, they should simply have all of their PositionAssignments closed.`]`
 
 ==Initiate Vehicle Trade==
-Actors: Manager
+Actors: Manager<br />
 The manager of a dealership can initiate a vehicle trade with another dealership by selecting the other participating dealership and the vehicles he/she wishes to trade with that dealership.
 
 ==Accept Vehicle Trade==
-Actors: Manager
+Actors: Manager<br />
 The manager of a dealership with which a trade has been initiated can accept the trade, which automatically transfers inventory between the dealerships.
 
 ==Reject Vehicle Trade==
-Actors: Manager
+Actors: Manager<br />
 The manager of a dealership with which a trade has been initiated can reject the trade.

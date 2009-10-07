@@ -3,22 +3,22 @@
 = Use Cases =
 
 ==List Vehicles==
-Actors: Admin, Manager, Salesperson
+Actors: Admin, Manager, Salesperson<br />
 A user can view a complete list of sellable vehicles at their dealership.
 
 ==Add Vehicle to Inventory==
-Actors: Manager
+Actors: Manager<br />
 A manager can add a vehicle to inventory at his/her dealership.
 
 ==Remove Vehicle from Inventory==
-Actors: Manager
+Actors: Manager<br />
 A manager can remove a vehicle from inventory at his/her dealership.
 
 ==View Individual Vehicle Details==
-Actors: Salesperson, Manager
+Actors: Salesperson, Manager<br />
 Users can view details (year, make, model, VIN, etc) of a specific vehicle.
 
-[vehicles anywhere, or just within the employee's dealership?]
+'['vehicles anywhere, or just within the employee's dealership?']'
 
 ==Edit Vehicle Details==
 Actors: Manager

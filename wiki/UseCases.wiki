@@ -7,12 +7,21 @@ Actors: Admin (A), Manager (M), Salesperson (S)
 Actions (need to be made into use cases):
 
 List cars (AMS)
+
 Add/remove car to/from inventory (M, A?)
+
 Show car details (AMS)
+
 Edit car details (M, A?)
+
 Mark car as Pending Sale (S, M?)
+
 Finalize Sale (M)
+
 Add/Remove/Edit dealership (A)
+
 Add/Remove/Edit employee (A, M?)
+
 Initiate trade (M)
+
 Accept trade (M)

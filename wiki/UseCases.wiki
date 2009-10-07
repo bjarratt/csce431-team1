@@ -1,27 +1,68 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+= Use Cases =
 
-Actors: Admin (A), Manager (M), Salesperson (S)
+==List Vehicles==
+Actors: Admin, Manager, Salesperson
+A user can view a complete list of sellable vehicles at their dealership.
 
-Actions (need to be made into use cases):
+==Add Vehicle to Inventory==
+Actors: Manager
+A manager can add a vehicle to inventory at his/her dealership.
 
-List cars (AMS)
+==Remove Vehicle from Inventory==
+Actors: Manager
+A manager can remove a vehicle from inventory at his/her dealership.
 
-Add/remove car to/from inventory (M, A?)
+==View Individual Vehicle Details==
+Actors: Salesperson, Manager
+Users can view details (year, make, model, VIN, etc) of a specific vehicle.
 
-Show car details (AMS)
+[vehicles anywhere, or just within the employee's dealership?]
 
-Edit car details (M, A?)
+==Edit Vehicle Details==
+Actors: Manager
+The manager of a dealership can edit the details of a vehicle in his/her dealership.
 
-Mark car as Pending Sale (S, M?)
+==Mark Vehicle as Pending Sale==
+Actors: Salesperson
+Salespeople can mark a vehicle as a Pending Sale, along with the negotiated price, taking it out of sellable inventory temporarily.
 
-Finalize Sale (M)
+[Should these expire if not finalized by a manager?]
 
-Add/Remove/Edit dealership (A)
+==Finalize Vehicle Sale==
+Actors: Manager
+The manager of a dealership can finalize any Pending Sale at his/her dealership, automatically removing the vehicle from inventory.
 
-Add/Remove/Edit employee (A, M?)
+==Add Dealership to System==
+Actors: Admin
+A system administrator can add dealerships to the database.
 
-Initiate trade (M)
+==Remove Dealership from System==
+Actors: Admin
+A system administrator can remove dealerships from the database.
 
-Accept trade (M)
+[Perhaps keep the dealership in the system, but mark as 'closed,' for historical record?]
+
+==Edit Dealership Details==
+Actors: Admin
+A system administrator can change the details of a dealership (address, description, website...)
+
+==Add Employee==
+Actors: Admin
+A system administrator can add employees to the database.
+
+==Remove Employee==
+[Rather than removing employees, they should simply have all of their PositionAssignments closed.]
+
+==Initiate Vehicle Trade==
+Actors: Manager
+The manager of a dealership can initiate a vehicle trade with another dealership by selecting the other participating dealership and the vehicles he/she wishes to trade with that dealership.
+
+==Accept Vehicle Trade==
+Actors: Manager
+The manager of a dealership with which a trade has been initiated can accept the trade, which automatically transfers inventory between the dealerships.
+
+==Reject Vehicle Trade==
+Actors: Manager
+The manager of a dealership with which a trade has been initiated can reject the trade.

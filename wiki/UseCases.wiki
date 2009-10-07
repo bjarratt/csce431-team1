@@ -18,7 +18,7 @@ A manager can remove a vehicle from inventory at his/her dealership.
 Actors: Salesperson, Manager<br />
 Users can view details (year, make, model, VIN, etc) of a specific vehicle.
 
-'['vehicles anywhere, or just within the employee's dealership?']'
+`[`Vehicles anywhere, or just within the employee's dealership?`]`
 
 ==Edit Vehicle Details==
 Actors: Manager

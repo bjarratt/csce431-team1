@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary This page details the requirements for the BUKI system as well as our implementation
 
 = Use Cases =
 

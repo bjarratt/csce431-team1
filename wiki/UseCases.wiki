@@ -16,10 +16,3 @@ Add/Remove/Edit dealership (A)
 Add/Remove/Edit employee (A, M?)
 Initiate trade (M)
 Accept trade (M)
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages

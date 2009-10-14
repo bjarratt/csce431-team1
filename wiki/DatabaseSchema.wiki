@@ -4,6 +4,8 @@
 
 This preliminary database schema should allow for implementation of all use cases currently specified.
 
+ * TODO: Add schema for messaging system
+
 
 = Tables =
  * All tables implicitly have an ID column not mentioned in this document. This column will have the specification: INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, and most likely will be named ModelNameID, or simply ID.

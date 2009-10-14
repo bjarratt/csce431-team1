@@ -31,4 +31,6 @@ Here is a list of all the requirements that our project should satisfy by the en
   *There should be an internal system of messaging other than email
 
   *Dealerships should be able to sell other types of vehicles such as boats, RV's, motorcycles, etc.
+
+  *Allow employees to have multiple roles at more than one dealership
  

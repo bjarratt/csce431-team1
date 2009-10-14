@@ -8,11 +8,11 @@ Here is a list of all the requirements that our project should satisfy by the en
 
 = Details =
 
-*provide a salesperson with various prices for the car, such as the price we advertise, the price after discount, or the lowest price they’re authorized to sell the car
+* provide a salesperson with various prices for the car, such as the price we advertise, the price after discount, or the lowest price they’re authorized to sell the car
 
-*mark the car as Pending Sale and the manager could sign off on the price
+* mark the car as Pending Sale and the manager could sign off on the price
 
-*manager would remove the car from inventory at the lot
+* manager would remove the car from inventory at the lot
 
 *manager needs to be able to enter new cars into the software
 

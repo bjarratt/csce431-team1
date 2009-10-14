@@ -56,11 +56,13 @@ belongs_to Dealership (Location)
 
 == Vehicles ==
 belongs_to Dealership
+belongs_to VehicleType
 has_one PendingSale (NULLABLE)
 has_one FinalSale (NULLABLE)
 
- * VIN (STRING NOT NULL)
+ * IdentNumber(STRING NOT NULL)
   * Note that though modern vehicles use a widely accepted format for the Vehicle Identification Number, older vehicles had VINs with formats that varied by manufacturer. Treating this value as an arbitrary (character) string allows us to include such vehicles.
+  * This value reflects the VIN on cars/motorcycles/RVs, or the HIN on boats.
  * Year (YEAR NOT NULL)
  * Make (STRING NOT NULL)
   * May be normalized by a table of Makes
@@ -76,6 +78,12 @@ has_one FinalSale (NULLABLE)
  * Accepted (DATETIME)
  * Rejected (DATETIME)
 
-== VehicleTradeItem ==
+== VehicleTradeItems ==
 belongs_to VehicleTrade
 belongs_to Vehicle
+
+== VehicleTypes ==
+ * Label (STRING NOT NULL)
+  * Will be "Car," "Truck," "RV," "Motorcycle," "Boat," etc
+ * IdentTitle (STRING NOT NULL)
+  * What is the identification number for this VehicleType called? (VIN, Hull ID, etc)

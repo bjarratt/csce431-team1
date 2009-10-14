@@ -14,23 +14,23 @@ Here is a list of all the requirements that our project should satisfy by the en
 
   * manager would remove the car from inventory at the lot
 
-  *manager needs to be able to enter new cars into the software
+  * manager needs to be able to enter new cars into the software
 
-  *manager should be able to select common features such as the make, model, condition of car
+  * manager should be able to select common features such as the make, model, condition of car
 
-  *Admin should be able to add new dealerships and new employees, as well as new makes and models
+  * Admin should be able to add new dealerships and new employees, as well as new makes and models
 
-  *When a dealership is removed, be able to list past employees in a "Limbo" list
+  * When a dealership is removed, be able to list past employees in a "Limbo" list
 
-  *have all dealerships using the same database system
+  * have all dealerships using the same database system
 
-  *Allow shipping and trading cars between dealership.  Have a manager or admin initiate a trade and allow the receiving end to accept or decline
+  * Allow shipping and trading cars between dealership.  Have a manager or admin initiate a trade and allow the receiving end to accept or decline
 
-  *Allow other managers or admin to search other dealership's inventory
+  * Allow other managers or admin to search other dealership's inventory
 
-  *There should be an internal system of messaging other than email
+  * There should be an internal system of messaging other than email
 
-  *Dealerships should be able to sell other types of vehicles such as boats, RV's, motorcycles, etc.
+  * Dealerships should be able to sell other types of vehicles such as boats, RV's, motorcycles, etc.
 
-  *Allow employees to have multiple roles at more than one dealership
+  * Allow employees to have multiple roles at more than one dealership
  

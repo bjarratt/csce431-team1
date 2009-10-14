@@ -1,6 +1,7 @@
 #summary This page details the requirements for the BUKI system as well as our implementation
 
 = Use Cases =
+ * TODO: Add use cases for employees in limbo, private messaging, and additional vehicle types
 
 ==List Vehicles==
 Actors: Admin, Manager, Salesperson<br />

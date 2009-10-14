@@ -43,6 +43,7 @@ Actors: Admin<br />
 A system administrator can remove dealerships from the database.
 
 `[`Perhaps keep the dealership in the system, but mark as 'closed,' for historical record?`]`
+`[`What happens to employees at that dealership?`]`
 
 ==Edit Dealership Details==
 Actors: Admin<br />

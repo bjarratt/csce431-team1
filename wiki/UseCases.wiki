@@ -1,7 +1,9 @@
 #summary This page details the requirements for the BUKI system as well as our implementation
 
 = Use Cases =
- * TODO: Add use cases for employees in limbo, private messaging, and additional vehicle types
+ * TODO: Add use cases for employees in limbo
+ * TODO: Use cases for Role assignments/unassignments
+ * TODO: Use cases for private messaging
 
 ==List Vehicles==
 Actors: Admin, Manager, Salesperson<br />
@@ -17,19 +19,27 @@ A manager can remove a vehicle from inventory at his/her dealership.
 
 ==View Individual Vehicle Details==
 Actors: Salesperson, Manager<br />
-Users can view details (year, make, model, VIN, etc) of a specific vehicle.
-
-`[`Vehicles anywhere, or just within the employee's dealership?`]`
+Users can view details (year, make, model, VIN, etc) of a specific vehicle at any dealership.
 
 ==Edit Vehicle Details==
 Actors: Manager<br />
 The manager of a dealership can edit the details of a vehicle in his/her dealership.
 
+==Send Message==
+Actors: Admin, Manager, Salesperson<br />
+Any employee can send a text-only message to selected other employees.
+
+==View Received Messages==
+Actors: Admin, Manager, Salesperson<br />
+Employees can view messages sent to them, both as a list of messages and individually.
+
+==Mark Received Message as Read==
+Actors: Admin, Manager, Salesperson<br />
+Rather than deleting messages, employees can mark messages as 'read', removing them from the default message listing view, which only shows unread messages.
+
 ==Mark Vehicle as Pending Sale==
 Actors: Salesperson<br />
 Salespeople can mark a vehicle as a Pending Sale, along with the negotiated price, taking it out of sellable inventory temporarily.
-
-`[`Should these expire if not finalized by a manager?`]`
 
 ==Finalize Vehicle Sale==
 Actors: Manager<br />
@@ -41,10 +51,7 @@ A system administrator can add dealerships to the database.
 
 ==Remove Dealership from System==
 Actors: Admin<br />
-A system administrator can remove dealerships from the database.
-
-`[`Perhaps keep the dealership in the system, but mark as 'closed,' for historical record?`]`
-`[`What happens to employees at that dealership?`]`
+A system administrator can close a dealership if that dealership does not have any employees (through Roles; check DB Schema).
 
 ==Edit Dealership Details==
 Actors: Admin<br />
@@ -53,9 +60,6 @@ A system administrator can change the details of a dealership (address, descript
 ==Add Employee==
 Actors: Admin<br />
 A system administrator can add employees to the database.
-
-==Remove Employee==
-`[`Rather than removing employees, they should simply have all of their PositionAssignments closed.`]`
 
 ==Initiate Vehicle Trade==
 Actors: Manager<br />

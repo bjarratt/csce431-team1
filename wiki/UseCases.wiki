@@ -1,9 +1,6 @@
 #summary This page details the requirements for the BUKI system as well as our implementation
 
 = Use Cases =
- * TODO: Add use cases for employees in limbo
- * TODO: Use cases for Role assignments/unassignments
- * TODO: Use cases for private messaging
 
 ==List Vehicles==
 Actors: Admin, Manager, Salesperson<br />
@@ -60,6 +57,22 @@ A system administrator can change the details of a dealership (address, descript
 ==Add Employee==
 Actors: Admin<br />
 A system administrator can add employees to the database.
+
+==Assign Employee to Role==
+Actors: Admin<br />
+A system administrator can assign an existing employee to a specific position in an existing dealership.
+
+==Request Employee Assignment==
+Actors: Manager<br />
+The manager of a dealership can request that an Employee be assigned to a specific position at his/her dealership.
+
+==View Assignment Requests==
+Actors: Admin, Manager<br />
+Admins can view all pending assignment requests and accept/deny them. Managers can view all of their pending assignment requests and potentially cancel them.
+
+==Remove Employee Assignment==
+Actors: Admin<br />
+A system administrator can remove an employee's assignment. This assignment remains in the database as a Role, but is marked as ended. Employees with no active roles are considered 'On Leave.'
 
 ==Initiate Vehicle Trade==
 Actors: Manager<br />

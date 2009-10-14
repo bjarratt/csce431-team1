@@ -5,6 +5,7 @@
 This preliminary database schema should allow for implementation of all use cases currently specified.
 
  * TODO: Add schema for messaging system
+ * TODO: Create diagram of this (PLAINTEXT SUCKS!!!!)
 
 
 = Tables =
@@ -27,6 +28,8 @@ has_many Roles
  * FirstName (STRING NOT NULL)
  * LastName (STRING NOT NULL)
  * Added (DATETIME NOT NULL)
+ * Terminated (DATETIME)
+  * If Null, Employee is still in the system.
 
 == FinalSales ==
 belongs_to Vehicle
@@ -48,7 +51,7 @@ belongs_to Employee
   * If `Expires` is NULL, the PendingSale does not expire
 
 == Roles ==
-Roles match Employees to JobTitles; each Employee may have multiple, one, or no Roles (no Roles implies the Employee has been terminated).
+Roles match Employees to JobTitles; each Employee may have multiple, one, or no Roles (no Roles marks the Employee as 'On Leave').
 belongs_to Employee
 belongs_to JobTitle
 belongs_to Dealership (Location)

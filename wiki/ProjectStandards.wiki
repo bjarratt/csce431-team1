@@ -53,10 +53,38 @@ public int dummy_method(int dummy)
 *C++* - `my_variable`
 
 ===Tabbing===
+  *Tabs should be composed of spaces for uniform displaying across platforms
+  *Code that enters into a different scope should have differing tab levels
+
+{{{
+public int dummy_method(int dummy)
+{
+    for (int c = 0; c < 999; c++)
+    {
+        ...
+	code
+	...
+    }
+
+}
+}}}
 
 ===Bracketing===
 
-Brackets should
+  * Open brackets should line up vertically with their corresponding close bracket
+{{{
+public int dummy_method(int dummy)
+{
+    for (int c = 0; c < 999; c++)
+    {
+        ...
+	code
+	...
+    }
+
+}
+}}}
+
 ----
 ==Bugs==
 

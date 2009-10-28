@@ -51,7 +51,7 @@ public int dummy_method(int dummy)
 *Java* - `myVariable`
 
 *C++* - `my_variable`
-
+----
 ==Bugs==
 
 *bugs should be submitted to the using the default format on Google Code

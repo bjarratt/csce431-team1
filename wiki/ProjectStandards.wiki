@@ -9,7 +9,7 @@ Here is a list of the standards to which our team will aspire to uphold for the 
 
 ===Commenting===
 
-  *_All_ methods and classes shall use the default documentation convention provided by each programming language
+  * _All_ methods and classes shall use the default documentation convention provided by each programming language
 
 {{{
 /// <summary>

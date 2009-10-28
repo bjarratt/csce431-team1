@@ -29,7 +29,7 @@ Here is a list of the standards to which our team will aspire to uphold for the 
         }
 }}}
 
-* If there is no default documentation then each mehtod shall have a commented block directly below the method name describing the functionality of 
+* If there is no default documentation then each mehtod shall have a commented block directly below the method name describing the functionality of the method
 
 {{{
 public int dummy_method(int dummy)
@@ -69,6 +69,8 @@ im triing 2 find ur company!!
 
 What version of the product are you using? On what operating system?
 IE6, of course!!!
+}}}
+
 
 Please provide any additional information below.
 

@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 = Introduction =
 
 Here is a list of the standards to which our team will aspire to uphold for the duration of our project. 
@@ -55,8 +53,9 @@ public int dummy_method(int dummy)
 ===Variable Names===
 *variable names should match the coding convention for each website
 
-*Java* - myVariable
-*C++* - my_variable
+*Java* - `myVariable`
+
+*C++* - `my_variable`
 
 ==Bugs==
 

@@ -2,86 +2,86 @@
 
 = Use Cases =
 
-==List Vehicles==
+==1. List Vehicles==
 Actors: Admin, Manager, Salesperson<br />
 A user can view a complete list of sellable vehicles at their dealership.
 
-==Add Vehicle to Inventory==
+==2. Add Vehicle to Inventory==
 Actors: Manager<br />
 A manager can add a vehicle to inventory at his/her dealership.
 
-==Remove Vehicle from Inventory==
+==3. Remove Vehicle from Inventory==
 Actors: Manager<br />
 A manager can remove a vehicle from inventory at his/her dealership.
 
-==View Individual Vehicle Details==
+==4. View Individual Vehicle Details==
 Actors: Salesperson, Manager<br />
 Users can view details (year, make, model, VIN, etc) of a specific vehicle at any dealership.
 
-==Edit Vehicle Details==
+==5. Edit Vehicle Details==
 Actors: Manager<br />
 The manager of a dealership can edit the details of a vehicle in his/her dealership.
 
-==Send Message==
+==6. Send Message==
 Actors: Admin, Manager, Salesperson<br />
 Any employee can send a text-only message to selected other employees.
 
-==View Received Messages==
+==7. View Received Messages==
 Actors: Admin, Manager, Salesperson<br />
 Employees can view messages sent to them, both as a list of messages and individually.
 
-==Mark Received Message as Read==
+==8. Mark Received Message as Read==
 Actors: Admin, Manager, Salesperson<br />
 Rather than deleting messages, employees can mark messages as 'read', removing them from the default message listing view, which only shows unread messages.
 
-==Mark Vehicle as Pending Sale==
+==9. Mark Vehicle as Pending Sale==
 Actors: Salesperson<br />
 Salespeople can mark a vehicle as a Pending Sale, along with the negotiated price, taking it out of sellable inventory temporarily.
 
-==Finalize Vehicle Sale==
+==10. Finalize Vehicle Sale==
 Actors: Manager<br />
 The manager of a dealership can finalize any Pending Sale at his/her dealership, automatically removing the vehicle from inventory.
 
-==Add Dealership to System==
+==11. Add Dealership to System==
 Actors: Admin<br />
 A system administrator can add dealerships to the database.
 
-==Remove Dealership from System==
+==12. Remove Dealership from System==
 Actors: Admin<br />
 A system administrator can close a dealership if that dealership does not have any employees (through Roles; check DB Schema).
 
-==Edit Dealership Details==
+==13. Edit Dealership Details==
 Actors: Admin<br />
 A system administrator can change the details of a dealership (address, description, website...)
 
-==Add Employee==
+==14. Add Employee==
 Actors: Admin<br />
 A system administrator can add employees to the database.
 
-==Assign Employee to Role==
+==15. Assign Employee to Role==
 Actors: Admin<br />
 A system administrator can assign an existing employee to a specific position in an existing dealership.
 
-==Request Employee Assignment==
+==16. Request Employee Assignment==
 Actors: Manager<br />
 The manager of a dealership can request that an Employee be assigned to a specific position at his/her dealership.
 
-==View Assignment Requests==
+==17. View Assignment Requests==
 Actors: Admin, Manager<br />
 Admins can view all pending assignment requests and accept/deny them. Managers can view all of their pending assignment requests and potentially cancel them.
 
-==Remove Employee Assignment==
+==18. Remove Employee Assignment==
 Actors: Admin<br />
 A system administrator can remove an employee's assignment. This assignment remains in the database as a Role, but is marked as ended. Employees with no active roles are considered 'On Leave.'
 
-==Initiate Vehicle Trade==
+==19. Initiate Vehicle Trade==
 Actors: Manager<br />
 The manager of a dealership can initiate a vehicle trade with another dealership by selecting the other participating dealership and the vehicles he/she wishes to trade with that dealership.
 
-==Accept Vehicle Trade==
+==20. Accept Vehicle Trade==
 Actors: Manager<br />
 The manager of a dealership with which a trade has been initiated can accept the trade, which automatically transfers inventory between the dealerships.
 
-==Reject Vehicle Trade==
+==21. Reject Vehicle Trade==
 Actors: Manager<br />
 The manager of a dealership with which a trade has been initiated can reject the trade.

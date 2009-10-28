@@ -5,11 +5,6 @@ Here is a list of the standards to which our team will aspire to uphold for the 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
 ==Coding Conventions==
 
 ===Commenting===
@@ -59,4 +54,24 @@ public int dummy_method(int dummy)
 
 ==Bugs==
 
-*bugs should be submitted using the default format on 
+*bugs should be submitted to the using the default format on Google Code
+
+{{{
+Reported by ironize, Sep 30, 2009
+
+What steps will reproduce the problem?
+1. Google 'Autotune'
+2. Nothing appears!!!
+3. (other than some car audio companies)
+
+What is the expected output? What do you see instead?
+im triing 2 find ur company!!
+
+What version of the product are you using? On what operating system?
+IE6, of course!!!
+
+Please provide any additional information below.
+
+WERE IS UR WEB PAGES?!??!?!?
+
+}}}

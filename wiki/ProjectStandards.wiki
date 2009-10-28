@@ -29,7 +29,7 @@ Here is a list of the standards to which our team will aspire to uphold for the 
         }
 }}}
 
-* if there is no default documentation then each mehtod shall have a commented block directly below the method name describing the functionality of 
+* If there is no default documentation then each mehtod shall have a commented block directly below the method name describing the functionality of 
 
 {{{
 public int dummy_method(int dummy)
@@ -46,7 +46,7 @@ public int dummy_method(int dummy)
     }
 }}}
 ===Variable Names===
-*variable names should match the coding convention for each website
+* Variable names should match the coding convention for each website
 
 *Java* - `myVariable`
 
@@ -54,7 +54,7 @@ public int dummy_method(int dummy)
 ----
 ==Bugs==
 
-*bugs should be submitted to the using the default format on Google Code
+* Bugs should be submitted to the using the default format on Google Code
 
 {{{
 Reported by ironize, Sep 30, 2009

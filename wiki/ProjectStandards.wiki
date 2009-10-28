@@ -1,0 +1,63 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Here is a list of the standards to which our team will aspire to uphold for the duration of our project. 
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+==Coding Conventions==
+
+===Commenting===
+
+*methods shall use the default documentation provided by each programming language
+
+{{{
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dummy"></param>
+        /// <returns></returns>
+        public int dummy_method(int dummy)
+        {
+            
+            ...
+
+            code
+
+            ...
+
+        }
+}}}
+
+* if there is no default documentation then each mehtod shall have a commented block directly below the method name describing the functionality of 
+
+{{{
+public int dummy_method(int dummy)
+    {
+         /* This method counts the total number of dummies
+          * and returns the number of ...
+          */
+         ...
+
+         code
+
+         ...
+
+    }
+}}}
+===Variable Names===
+*variable names should match the coding convention for each website
+
+*Java* - myVariable
+*C++* - my_variable
+
+==Bugs==
+
+*bugs should be submitted using the default format on 

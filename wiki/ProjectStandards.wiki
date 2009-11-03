@@ -53,8 +53,8 @@ public int dummy_method(int dummy)
 *C++* - `my_variable`
 
 ===Tabbing===
-  *Tabs should be composed of spaces for uniform displaying across platforms
-  *Code that enters into a different scope should have differing tab levels
+  * Tabs should be composed of spaces for uniform displaying across platforms
+  * Code that enters into a different scope should have differing tab levels
 
 {{{
 public int dummy_method(int dummy)

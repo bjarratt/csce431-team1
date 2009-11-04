@@ -95,7 +95,7 @@ Actors: Employee<br />
 Any employee can change their own password.
 
 ==24. Assign Temporary Password==
-Actors: SysAdmin<br />
+Actors: Admin<br />
 An admin can assign an employee a temporary password, so that employees can reset forgotten passwords.
 
 ==25. Reset Password==

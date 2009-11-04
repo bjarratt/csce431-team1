@@ -52,7 +52,7 @@ A system administrator can close a dealership if that dealership does not have a
 
 ==13. Edit Dealership Details==
 Actors: Admin<br />
-A system administrator can change the details of a dealership (address, description, website...)
+A system administrator can change the details of a dealership (address, description, website...).
 
 ==14. Add Employee==
 Actors: Admin<br />
@@ -85,3 +85,19 @@ The manager of a dealership with which a trade has been initiated can accept the
 ==21. Reject Vehicle Trade==
 Actors: Manager<br />
 The manager of a dealership with which a trade has been initiated can reject the trade.
+
+==24. Login==
+Actors: Employee
+Employees can login to the system by entering their username and password.
+
+==23. Change Password==
+Actors: Employee<br />
+Any employee can change their own password.
+
+==24. Assign Temporary Password==
+Actors: SysAdmin<br />
+An admin can assign an employee a temporary password, so that employees can reset forgotten passwords.
+
+==25. Reset Password==
+Actors: Employee<br />
+An employee with a temporary password can set their permanent password (simultaneously removing the temporary password).

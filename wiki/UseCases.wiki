@@ -87,7 +87,7 @@ Actors: Manager<br />
 The manager of a dealership with which a trade has been initiated can reject the trade.
 
 ==24. Login==
-Actors: Employee
+Actors: Employee<br />
 Employees can login to the system by entering their username and password.
 
 ==23. Change Password==

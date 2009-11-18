@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Employees>
+	<Employee EmployeeID="0" Username="Anabaptist" PasswordHash="37EF232104AA704B4B7F02742F37DCF47B150A5C" Salt="testing" />
+	<Employee EmployeeID="1" Username="Schism" PasswordHash="2F4525C720CDCE8E1516BF85041CF95C16D19E68" Salt="testing" />
+	<Employee EmployeeID="2" Username="repofail" PasswordHash="FA574472F7DCFC2C6EED4034437B1B7DC15420E4" Salt="iambecomeroot!" />
+</Employees>

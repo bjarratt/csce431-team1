@@ -57,6 +57,41 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDealer.aspx.cs">
+      <DependentUpon>AdminDealer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDealer.aspx.designer.cs">
+      <DependentUpon>AdminDealer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEmployee.aspx.cs">
+      <DependentUpon>AdminEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminEmployee.aspx.designer.cs">
+      <DependentUpon>AdminEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminHome.aspx.cs">
+      <DependentUpon>AdminHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminHome.aspx.designer.cs">
+      <DependentUpon>AdminHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVehicle.aspx.cs">
+      <DependentUpon>AdminVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminVehicle.aspx.designer.cs">
+      <DependentUpon>AdminVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerHome.aspx.cs">
+      <DependentUpon>ManagerHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerHome.aspx.designer.cs">
+      <DependentUpon>ManagerHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\DatabaseModel.cs" />
     <Compile Include="Layout.Master.cs">
       <DependentUpon>Layout.Master</DependentUpon>
@@ -75,10 +110,39 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SalespersonEmployee.aspx.cs">
+      <DependentUpon>SalespersonEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalespersonEmployee.aspx.designer.cs">
+      <DependentUpon>SalespersonEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalespersonVehicle.aspx.cs">
+      <DependentUpon>SalespersonVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalespersonVehicle.aspx.designer.cs">
+      <DependentUpon>SalespersonVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalespersonHome.aspx.cs">
+      <DependentUpon>SalespersonHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalespersonHome.aspx.designer.cs">
+      <DependentUpon>SalespersonHome.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminDealer.aspx" />
+    <Content Include="AdminEmployee.aspx" />
+    <Content Include="AdminHome.aspx" />
+    <Content Include="AdminVehicle.aspx" />
     <Content Include="Layout.Master" />
     <Content Include="Default.aspx" />
+    <Content Include="ManagerHome.aspx" />
+    <Content Include="SalespersonEmployee.aspx" />
+    <Content Include="SalespersonVehicle.aspx" />
+    <Content Include="SalespersonHome.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

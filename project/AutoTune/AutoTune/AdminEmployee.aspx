@@ -14,13 +14,17 @@
         <br />
         You are logged in as: (employee name, number)<br />
         <br />
-        <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click">Return to Admin Home</asp:LinkButton>
+        <asp:HyperLink ID="HyperLink1" runat="server" 
+            NavigateUrl="AdminHome.aspx">Return to Admin Home</asp:HyperLink>
         <br />
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="Add Employee" />
         <br />
         Employee Info Goes Here....
         <br />
         <br />
-        <asp:LinkButton ID="LinkButton2" runat="server">Return to Admin Home</asp:LinkButton>
+        <asp:HyperLink ID="HyperLink2" runat="server" 
+            NavigateUrl="AdminHome.aspx">Return to Admin Home</asp:HyperLink>
         <br />
         <br />
         <asp:LinkButton ID="LinkButton3" runat="server">Logout</asp:LinkButton>

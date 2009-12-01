@@ -20,9 +20,5 @@ namespace AutoTune
 
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

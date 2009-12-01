@@ -14,16 +14,18 @@
         <br />
         You are logged in as: (employee name, number)<br />
         <br />
-        <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click">View Vehicle Inventory</asp:LinkButton>
+        <asp:HyperLink ID="HyperLink1" runat="server" 
+            NavigateUrl="SalespersonVehicle.aspx">View Vehicle Inventory</asp:HyperLink>
         <br />
         <br />
-        <asp:LinkButton ID="LinkButton2" runat="server">View Employee Roster</asp:LinkButton>
+        <asp:HyperLink ID="HyperLink2" runat="server" 
+            NavigateUrl="SalespersonEmployee.aspx">View Employee Roster</asp:HyperLink>
         <br />
         <br />
-        <asp:LinkButton ID="LinkButton3" runat="server">Messaging</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server">Messaging</asp:LinkButton>
         <br />
         <br />
-        <asp:LinkButton ID="LinkButton4" runat="server">Logout</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton2" runat="server">Logout</asp:LinkButton>
     </div>
     </form>
 </body>

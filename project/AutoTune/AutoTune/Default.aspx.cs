@@ -35,6 +35,7 @@ namespace AutoTune
 			{
 				UserLabel.Text = string.Format("You are logged in as '{0}'.", user.Username);
 				Session["User"] = user;
+				bool test = user.AllFieldsAreValid();
 			}
 		}
 

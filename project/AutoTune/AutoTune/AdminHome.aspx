@@ -1,36 +1,33 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminHome.aspx.cs" Inherits="AutoTune.AdminHome" %>
-
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="AdminHome.aspx.cs" Inherits="AutoTune.AdminHome" %>
+<asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
+    AutoTune
+</asp:Content>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+</asp:Content>
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+	<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>
+	<br />
+	Username:
+	<asp:TextBox ID="Username" runat="server"></asp:TextBox>
+	<br />
+	Password:
+	<asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+	<br />
+	<asp:Button ID="LoginButton" runat="server" Text="Login" onclick="Login_Click" />
+	<asp:Button ID="LogoutButton" runat="server" Text="Logout" onclick="Logout_Click" />
+	""
+</asp:Content>
+<%--
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Administrator Homepage</title>
+    <link href="default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    Admin Home
-        <br />
-        <br />
-        You are logged in as: (employee name, number)<br />
-        <br />
-        <asp:HyperLink ID="HyperLink1" runat="server" 
-            NavigateUrl="AdminVehicle.aspx">View Vehicle Inventory</asp:HyperLink>
-        <br />
-        <br />
-        <asp:HyperLink ID="HyperLink2" runat="server" 
-            NavigateUrl="AdminEmployee.aspx">View Employee Roster</asp:HyperLink>
-        <br />
-        <br />
-        <asp:HyperLink ID="HyperLink3" runat="server" 
-            NavigateUrl="AdminDealer.aspx">View Dealership List</asp:HyperLink>
-        <br />
-        <br />
-        <asp:LinkButton ID="LinkButton1" runat="server">Messaging</asp:LinkButton>
-        <br />
-        <br />
-        <asp:LinkButton ID="LinkButton2" runat="server">Logout</asp:LinkButton>
-    </div>
     </form>
 </body>
 </html>
+--%>

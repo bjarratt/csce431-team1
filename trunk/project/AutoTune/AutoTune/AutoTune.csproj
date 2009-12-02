@@ -137,6 +137,7 @@
     <Content Include="AdminEmployee.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminVehicle.aspx" />
+    <Content Include="default.css" />
     <Content Include="Layout.Master" />
     <Content Include="Default.aspx" />
     <Content Include="ManagerHome.aspx" />

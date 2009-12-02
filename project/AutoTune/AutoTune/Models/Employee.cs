@@ -30,7 +30,11 @@ namespace AutoTune.Models
 			return DatabaseFields.Contains(field_name);
 		}
 
-		public int? EmployeeID;
+		public override string TableName()
+		{
+			return "Employees";
+		}
+
 		public string Username;
 		public string PasswordHash;
 		public string Salt;
@@ -38,7 +42,7 @@ namespace AutoTune.Models
 
 		public Employee(string username, string password)
 		{
-			EmployeeID = null;
+			ID = null;
 			Username = username;
 			if (Employee.Find(username) != null)
 				throw new Exception("An employee with this username already exists.");
@@ -49,7 +53,7 @@ namespace AutoTune.Models
 
 		public Employee(MySqlDataReader reader)
 		{
-			EmployeeID = (int)reader[0];
+			ID = (int)reader[0];
 			Username = (string)reader[1];
 			PasswordHash = (string)reader[2];
 			Salt = (string)reader[3];
@@ -92,6 +96,15 @@ namespace AutoTune.Models
 		}
 
 		public static Regex UsernameRegex = new Regex("^\\w{6,32}$");
+		public static bool IsValidUsername(string username)
+		{
+			return UsernameRegex.Match(username).Success;
+		}
+
 		public static Regex PasswordRegex = new Regex("^[^\\s]{6,32}$");
+		public static bool IsValidPassword(string password)
+		{
+			return PasswordRegex.Match(password).Success;
+		}
 	}
 }

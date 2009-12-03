@@ -15,5 +15,6 @@
 	<br />
 	<asp:Button ID="LoginButton" runat="server" Text="Login" onclick="Login_Click" />
 	<asp:Button ID="LogoutButton" runat="server" Text="Logout" onclick="Logout_Click" />
+	<asp:Button ID="NewUserButton" runat="server" Text="New User" onclick="NewUserButton_Click" />
 	""
 </asp:Content>

@@ -16,14 +16,7 @@ namespace AutoTune.Models
 	{
 		public class DatabaseException : Exception
 		{
-			public enum ErrorType
-			{
-				InvalidField
-			} ;
-
-			public string ErrorNote { get; private set; }
-
-			public DatabaseException(string message, ) :
+			public DatabaseException(string message) :
 				base(message) { }
 		}
 		private class InternalException : Exception

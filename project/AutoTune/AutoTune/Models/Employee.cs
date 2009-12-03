@@ -40,6 +40,8 @@ namespace AutoTune.Models
 		public string Salt;
 		public string TemporaryPassword;
 
+		public Employee() : base() { Salt = GenerateNewSalt(); }
+
 		public static Employee Authenticate(string username, string password)
 		{
 			throw new NotImplementedException();
@@ -55,6 +57,18 @@ namespace AutoTune.Models
 		public static bool IsValidPassword(string password)
 		{
 			return PasswordRegex.Match(password).Success;
+		}
+
+		public void SetPassword(string password)
+		{
+			if(IsValidPassword(password))
+			{
+				PasswordHash = Hash(password + Salt);
+			}
+			else
+			{
+				throw new DatabaseException("Invalid password.");
+			}
 		}
 	}
 }

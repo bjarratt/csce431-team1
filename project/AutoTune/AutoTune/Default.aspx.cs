@@ -49,5 +49,16 @@ namespace AutoTune
 		{
 			Logout();
 		}
+
+		protected void NewUserButton_Click(object sender, EventArgs e)
+		{
+			string username = Username.Text;
+			string password = Password.Text;
+
+			Employee employee = new Employee();
+			employee.Username = username;
+			employee.SetPassword(password);
+			employee.Commit();
+		}
 	}
 }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
-using MySql.Data.MySqlClient;
 
 namespace AutoTune.Models
 {
@@ -29,7 +27,15 @@ namespace AutoTune.Models
 
 		public static Employee Authenticate(string username, string password)
 		{
-			throw new NotImplementedException();
+			Employee employee = FindByUsername(username);
+			if (employee == null)
+				throw new DatabaseException(string.Format("User '{0}' does not exist", username));
+
+			string hash = Hash(password + employee.Salt);
+			if (hash != employee.PasswordHash)
+				throw new DatabaseException("Invalid username or password");
+
+			return employee;
 		}
 
 		public static Regex UsernameRegex = new Regex("^\\w{6,32}$");
@@ -44,27 +50,23 @@ namespace AutoTune.Models
 			return PasswordRegex.Match(password).Success;
 		}
 
-		public static Employee[] FindAll(int id)
+		public static Employee[] Find(Hashtable conditions)
 		{
-			OpenConnection();
+			return Find("Employees", conditions);
+		}
 
-			const string commandString = "SELECT * FROM Employees";
+		public static Employee[] FindAll()
+		{
+			return FindAll("Employees");
+		}
 
-			MySqlCommand command = new MySqlCommand(commandString, Connection);
-			MySqlDataReader reader = command.ExecuteReader();
-
-			List<Employee> employees = new List<Employee>();
-
-			while(reader.Read())
-			{
-				Employee employee = new Employee();
-				employee.UpdateDatabaseFieldValues(reader);
-				employees.Add(employee);
-			}
-
-			CloseConnection();
-
-			return employees.ToArray();
+		public static Employee FindByUsername(string username)
+		{
+			Employee[] employees = Find(new Hashtable { { "Username", username } });
+			if (employees.Length < 1)
+				return null;
+			else
+				return employees[0];
 		}
 
 		public void SetPassword(string password)

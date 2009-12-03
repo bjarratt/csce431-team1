@@ -1,20 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 using MySql.Data.MySqlClient;
 
 namespace AutoTune.Models
@@ -22,19 +11,20 @@ namespace AutoTune.Models
 	public abstract partial class DatabaseModel
 	{
 		public int? ID { get; protected set; }
+		public DateTime? Added { get; protected set; }
 
-		public abstract bool IsDatabaseField(string field_name);
+		public abstract bool IsDatabaseField(string fieldName);
 		public abstract string TableName();
 
-		public DatabaseModel() { ID = null; }
+		protected DatabaseModel() { ID = null; Added = null; }
 
 		public bool AllFieldsAreValid()
 		{
-			FieldInfo[] fields = this.GetType().GetFields();
+			FieldInfo[] fields = GetType().GetFields();
 			foreach (FieldInfo field in fields)
 			{
 				object value = field.GetValue(this);
-				IsValid(value, field.Name, this.GetType());
+				IsValid(value, field.Name, GetType());
 			}
 
 			return true;
@@ -62,21 +52,21 @@ namespace AutoTune.Models
 		{
 			OpenConnection();
 
-			string[] column_names = GetColumnNames();
-			string[] column_values = GetColumnValues();
+			string[] columnNames = GetColumnNames();
+			string[] columnValues = GetColumnValues();
 			
-			List<string> column_setters = new List<string>();
+			List<string> columnSetters = new List<string>();
 
-			for(int i = 0; i < column_names.Length; ++i)
+			for(int i = 0; i < columnNames.Length; ++i)
 			{
-				column_setters.Add(string.Format("{0} = {1}", column_names[i], column_values[1]));
+				columnSetters.Add(string.Format("{0} = {1}", columnNames[i], columnValues[1]));
 			}
 
-			string setters = string.Join(", ", column_setters.ToArray());
+			string setters = string.Join(", ", columnSetters.ToArray());
 
-			string command_string = string.Format("UPDATE {0} SET {1} WHERE ID = {2}", TableName(), setters, ID);
+			string commandString = string.Format("UPDATE {0} SET {1} WHERE ID = {2}", TableName(), setters, ID);
 
-			MySqlCommand command = new MySqlCommand(command_string, Connection);
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
 			command.ExecuteNonQuery();
 
 			CloseConnection();
@@ -87,13 +77,15 @@ namespace AutoTune.Models
 		/// </summary>
 		private void CommitNewDatabaseRow()
 		{
+			Added = DateTime.Now;
+
 			OpenConnection();
 
 			string[] columnNames = GetColumnNames();
 			string[] columnValues = GetColumnValues();
 
 			string columns = string.Join(", ", columnNames);
-			string values = string.Join(",", columnValues);
+			string values = string.Join(", ", columnValues);
 
 			string commandString = string.Format(
 				"INSERT INTO {0} ({1}) VALUES ({2})",
@@ -116,30 +108,34 @@ namespace AutoTune.Models
 		{
 			FieldInfo[] fields = GetFields();
 
-			List<string> column_names = new List<string>();
+			List<string> columnNames = new List<string>();
 
 			foreach (FieldInfo field in fields)
 			{
 				if (IsDatabaseField(field.Name))
-					column_names.Add(field.Name);
+					columnNames.Add(field.Name);
 			}
 
-			return column_names.ToArray();
+			columnNames.Add("Added");
+
+			return columnNames.ToArray();
 		}
 
 		private string[] GetColumnValues()
 		{
 			FieldInfo[] fields = GetFields();
-			List<string> column_values = new List<string>();
+			List<string> columnValues = new List<string>();
 			foreach (FieldInfo field in fields)
 			{
 				if(IsDatabaseField(field.Name))
 				{
-					column_values.Add(SqlEscaped(field.GetValue(this)));
+					columnValues.Add(SqlEscaped(field.GetValue(this)));
 				}
 			}
 
-			return column_values.ToArray();
+			columnValues.Add(SqlEscaped(Added));
+
+			return columnValues.ToArray();
 		}
 
 		/// <summary>
@@ -150,7 +146,7 @@ namespace AutoTune.Models
 		/// </returns>
 		private FieldInfo[] GetFields()
 		{
-			FieldInfo[] fields = this.GetType().GetFields();
+			FieldInfo[] fields = GetType().GetFields();
 			fields.OrderBy(field => field.Name);
 
 			return fields;
@@ -169,19 +165,17 @@ namespace AutoTune.Models
 			return result;
 		}
 
-		public static bool IsValid(object value, string field_name, Type self)
+		public static bool IsValid(object value, string fieldName, Type self)
 		{
-			FieldInfo field = self.GetField(field_name);
-
-			MethodInfo method = self.GetMethod("IsValid" + field_name);
+			MethodInfo method = self.GetMethod("IsValid" + fieldName);
 			if (method == null)
 			{
 				return true;
 			}
 			else
 			{
-				bool is_valid = (bool)method.Invoke(null, new object[] { value });
-				return is_valid;
+				bool isValid = (bool)method.Invoke(null, new[] { value });
+				return isValid;
 			}
 		}
 
@@ -191,13 +185,20 @@ namespace AutoTune.Models
 				return "NULL";
 			else if (value is string)
 				return SqlEscaped((string)value);
+			else if (value is DateTime)
+				return SqlEscaped((DateTime) value);
 			else
 				return value.ToString();
 		}
 
 		public static string SqlEscaped(string value)
 		{
-			return string.Format("\"{0}\"", value.Replace("\"", "\\\""));
+			return string.Format("\"{0}\"", value.Replace("\n", "\\n").Replace("\"", "\\\""));
+		}
+
+		public static string SqlEscaped(DateTime value)
+		{
+			return string.Format("\"{0}\"", value.ToString("yyyy-MM-dd HH:mm:ss"));
 		}
 
 		public void Update()
@@ -206,7 +207,7 @@ namespace AutoTune.Models
 			{
 				string message = string.Format(
 					"Cannot update {0} instance; does not exist in database.",
-					this.GetType().ToString());
+					GetType());
 				throw new DatabaseException(message);
 			}
 			else
@@ -220,13 +221,13 @@ namespace AutoTune.Models
 		{
 			OpenConnection();
 
-			string[] column_names = GetColumnNames();
+			string[] columnNames = GetColumnNames();
 
-			string columns = string.Join(", ", column_names);
+			string columns = string.Join(", ", columnNames);
 
-			string command_string = string.Format("SELECT {0} FROM {1}", columns, TableName());
+			string commandString = string.Format("SELECT {0} FROM {1}", columns, TableName());
 
-			MySqlCommand command = new MySqlCommand(command_string, Connection);
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
 			MySqlDataReader reader = command.ExecuteReader();
 
 			if (reader.Read())
@@ -240,14 +241,14 @@ namespace AutoTune.Models
 				// been committed or read from the database.
 				throw new InternalException(string.Format(
 					"{0}[{1}] instance not found in table {2}!",
-					this.GetType().ToString(),	// The model name
+					GetType(),	// The model name
 					ID, TableName()));
 			}
 
 			CloseConnection();
 		}
 
-		private void UpdateDatabaseFieldValues(MySqlDataReader reader)
+		protected void UpdateDatabaseFieldValues(MySqlDataReader reader)
 		{
 			FieldInfo[] fields = GetFields();
 
@@ -280,10 +281,13 @@ namespace AutoTune.Models
 
 			for (int i = 0; i < columnNames.Length; ++i)
 			{
-				columnSetters.Add(string.Format("{0} = {1}", columnNames[i], columnValues[1]));
+				if (columnValues[i] == "NULL")
+					columnSetters.Add(string.Format("ISNULL({0})", columnNames[i]));
+				else
+					columnSetters.Add(string.Format("{0} = {1}", columnNames[i], columnValues[i]));
 			}
 
-			string setters = string.Join(", ", columnSetters.ToArray());
+			string setters = string.Join(" AND ", columnSetters.ToArray());
 
 			string commandString = string.Format(
 				"SELECT ID FROM {0} WHERE {1} ORDER BY Added DESC",
@@ -300,7 +304,7 @@ namespace AutoTune.Models
 			{
 				throw new InternalException(string.Format(
 				                            	"Committed {0} not found in database.",
-				                            	this.GetType().ToString()));	// Model name
+				                            	GetType()));	// Model name
 			}
 
 			CloseConnection();

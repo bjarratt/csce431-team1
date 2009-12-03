@@ -1,33 +1,17 @@
 ﻿using System;
-using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-using System.Xml;
-
-using MySql;
-using MySql.Data.MySqlClient;
+using System.Linq;
 using System.Text.RegularExpressions;
+using MySql.Data.MySqlClient;
 
 namespace AutoTune.Models
 {
 	public class Employee : DatabaseModel
 	{
-		public static string[] DatabaseFields = {"Username", "PasswordHash", "Salt", "TemporaryPassword"};
-		public override bool IsDatabaseField(string field_name)
+		public static string[] DatabaseFields = {"Username", "PasswordHash", "Salt", "TemporaryHash"};
+		public override bool IsDatabaseField(string fieldName)
 		{
-			return DatabaseFields.Contains(field_name);
+			return DatabaseFields.Contains(fieldName);
 		}
 
 		public override string TableName()
@@ -38,9 +22,10 @@ namespace AutoTune.Models
 		public string Username;
 		public string PasswordHash;
 		public string Salt;
-		public string TemporaryPassword;
+		public string TemporaryHash;
 
-		public Employee() : base() { Salt = GenerateNewSalt(); }
+		public Employee()
+		{ Salt = GenerateNewSalt(); }
 
 		public static Employee Authenticate(string username, string password)
 		{
@@ -53,10 +38,33 @@ namespace AutoTune.Models
 			return UsernameRegex.Match(username).Success;
 		}
 
-		public static Regex PasswordRegex = new Regex("^[^\\s]{6,32}$");
+		public static Regex PasswordRegex = new Regex("^[^\\s]{4,32}$");
 		public static bool IsValidPassword(string password)
 		{
 			return PasswordRegex.Match(password).Success;
+		}
+
+		public static Employee[] FindAll(int id)
+		{
+			OpenConnection();
+
+			const string commandString = "SELECT * FROM Employees";
+
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
+			MySqlDataReader reader = command.ExecuteReader();
+
+			List<Employee> employees = new List<Employee>();
+
+			while(reader.Read())
+			{
+				Employee employee = new Employee();
+				employee.UpdateDatabaseFieldValues(reader);
+				employees.Add(employee);
+			}
+
+			CloseConnection();
+
+			return employees.ToArray();
 		}
 
 		public void SetPassword(string password)

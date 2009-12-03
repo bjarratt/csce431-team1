@@ -89,17 +89,17 @@ namespace AutoTune.Models
 		{
 			OpenConnection();
 
-			string[] column_names = GetColumnNames();
-			string[] column_values = GetColumnValues();
+			string[] columnNames = GetColumnNames();
+			string[] columnValues = GetColumnValues();
 
-			string columns = string.Join(", ", column_names);
-			string values = string.Join(",", column_values);
+			string columns = string.Join(", ", columnNames);
+			string values = string.Join(",", columnValues);
 
-			string command_string = string.Format(
+			string commandString = string.Format(
 				"INSERT INTO {0} ({1}) VALUES ({2})",
 				TableName(), columns, values);
 
-			MySqlCommand command = new MySqlCommand(command_string, Connection);
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
 			command.ExecuteNonQuery();
 
 			UpdateID();
@@ -187,7 +187,9 @@ namespace AutoTune.Models
 
 		public static string SqlEscaped(object value)
 		{
-			if (value is string)
+			if (value == null)
+				return "NULL";
+			else if (value is string)
 				return SqlEscaped((string)value);
 			else
 				return value.ToString();

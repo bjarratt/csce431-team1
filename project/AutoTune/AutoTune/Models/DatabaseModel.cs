@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,8 +11,8 @@ namespace AutoTune.Models
 {
 	public abstract partial class DatabaseModel
 	{
-		public int? ID { get; protected set; }
-		public DateTime? Added { get; protected set; }
+		public int? ID;
+		public DateTime? Added;
 
 		public abstract bool IsDatabaseField(string fieldName);
 		public abstract string TableName();
@@ -99,6 +100,68 @@ namespace AutoTune.Models
 			CloseConnection();
 		}
 
+		protected static Employee[] Find(string tableName, Hashtable conditions)
+		{
+			if (conditions == null || conditions.Count == 0)
+				return FindAll(tableName);
+
+			OpenConnection();
+
+			List<string> clauses = new List<string>();
+
+			foreach(DictionaryEntry condition in conditions)
+			{
+				clauses.Add(
+					string.Format("{0} = {1}",
+					              condition.Key, SqlEscaped(condition.Value)));
+			}
+
+			string whereClause = string.Join(" AND ", clauses.ToArray());
+
+			string commandString = string.Format(
+				"SELECT * FROM {0} WHERE {1}",
+				tableName, whereClause);
+
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
+			MySqlDataReader reader = command.ExecuteReader();
+
+			List<Employee> employees = new List<Employee>();
+
+			while (reader.Read())
+			{
+				Employee employee = new Employee();
+				employee.UpdateDatabaseFieldValues(reader);
+				employees.Add(employee);
+			}
+
+			CloseConnection();
+
+			return employees.ToArray();
+		}
+
+		protected static Employee[] FindAll(string tableName)
+		{
+			OpenConnection();
+
+			string commandString = string.Format("SELECT * FROM {0}", tableName);
+
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
+			MySqlDataReader reader = command.ExecuteReader();
+
+			List<Employee> employees = new List<Employee>();
+
+			while (reader.Read())
+			{
+				Employee employee = new Employee();
+				employee.UpdateDatabaseFieldValues(reader);
+				employees.Add(employee);
+			}
+
+			CloseConnection();
+
+			return employees.ToArray();
+		}
+
 		public static string GenerateNewSalt()
 		{
 			return Hash(String.Format("{0}{1}", DateTime.Now, (new Random()).NextDouble()));
@@ -147,9 +210,15 @@ namespace AutoTune.Models
 		private FieldInfo[] GetFields()
 		{
 			FieldInfo[] fields = GetType().GetFields();
-			fields.OrderBy(field => field.Name);
 
-			return fields;
+			List<FieldInfo> filteredFields = new List<FieldInfo>();
+			foreach(FieldInfo field in fields)
+			{
+				if(IsDatabaseField(field.Name) || field.Name == "ID" || field.Name == "Added")
+					filteredFields.Add(field);
+			}
+
+			return filteredFields.OrderBy(field => field.Name).ToArray();
 		}
 
 		public static string Hash(string value)
@@ -250,17 +319,26 @@ namespace AutoTune.Models
 
 		protected void UpdateDatabaseFieldValues(MySqlDataReader reader)
 		{
-			FieldInfo[] fields = GetFields();
+			Hashtable fields = new Hashtable();
 
-			if (fields.Length != reader.FieldCount)
+			foreach(FieldInfo field in GetFields())
+			{
+				fields.Add(field.Name, field);
+			}
+
+			if (fields.Count != reader.FieldCount)
 				throw new InternalException(string.Format(
 					"Mismatch between instance and database field counts: {0}[instance] != {1}[database].",
-					fields.Length,
+					fields.Count,
 					reader.FieldCount));
 
-			for (int i = 0; i < fields.Length; ++i)
+			for (int i = 0; i < reader.FieldCount; ++i)
 			{
-				fields[i].SetValue(this, reader[i]);
+				Type dbType = reader[i].GetType();
+				if(dbType == typeof(DBNull))
+					((FieldInfo)fields[reader.GetName(i)]).SetValue(this, null);
+				else
+					((FieldInfo) fields[reader.GetName(i)]).SetValue(this, reader[i]);
 			}
 		}
 

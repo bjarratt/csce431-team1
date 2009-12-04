@@ -9,7 +9,7 @@ namespace AutoTune.Models
 			public DatabaseException(string message) :
 				base(message) { }
 		}
-		private class InternalException : Exception
+		protected class InternalException : Exception
 		{
 			public InternalException(string message) :
 				base(message) { }

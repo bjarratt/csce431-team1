@@ -17,10 +17,32 @@ namespace AutoTune.Models
 			return "Employees";
 		}
 
-		public string Username;
-		public string PasswordHash;
-		public string Salt;
-		public string TemporaryHash;
+		public string Username
+		{
+			get { return (string) this["Username"]; }
+			set { this["Username"] = value; }
+		}
+
+		public string Password
+		{
+			set{ SetPassword(value);}
+		}
+
+		public string PasswordHash
+		{
+			get { return (string)this["PasswordHash"]; }
+		}
+
+		public string Salt
+		{
+			get { return (string)this["Salt"]; }
+			set { this["Salt"] = value; }
+		}
+		public string TemporaryHash
+		{
+			get { return (string)this["TemporaryHash"]; }
+			set { this["TemporaryHash"] = value; }
+		}
 
 		public Employee()
 		{ Salt = GenerateNewSalt(); }
@@ -73,7 +95,7 @@ namespace AutoTune.Models
 		{
 			if(IsValidPassword(password))
 			{
-				PasswordHash = Hash(password + Salt);
+				this["PasswordHash"] = Hash(password + Salt);
 			}
 			else
 			{

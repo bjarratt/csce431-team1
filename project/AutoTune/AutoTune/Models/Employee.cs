@@ -6,7 +6,7 @@ namespace AutoTune.Models
 {
 	public class Employee : DatabaseModel
 	{
-		public static string[] DatabaseFields = {"Username", "PasswordHash", "Salt", "TemporaryHash"};
+		private static readonly string[] DatabaseFields = {"Username", "PasswordHash", "Salt", "TemporaryHash"};
 		public override bool IsDatabaseField(string fieldName)
 		{
 			return DatabaseFields.Contains(fieldName);
@@ -72,13 +72,14 @@ namespace AutoTune.Models
 			return PasswordRegex.Match(password).Success;
 		}
 
+		public static Employee Find(int id)
+		{
+			return (Employee)Find("Employees", () => new Employee(), new Hashtable {{"ID", id}}).First();
+		}
+
 		public static Employee[] Find(Hashtable conditions)
 		{
-			DatabaseModel[] models = Find("Employees", () => new Employee(), conditions);
-			Employee[] employees = new Employee[models.Length];
-			for (int i = 0; i < models.Length; ++i)
-				employees[i] = (Employee)models[i];
-			return employees;
+			return Find("Employees", () => new Employee(), conditions).Cast<Employee>().ToArray();
 		}
 
 		public static Employee[] FindAll()
@@ -104,6 +105,19 @@ namespace AutoTune.Models
 			else
 			{
 				throw new DatabaseException("Invalid password.");
+			}
+		}
+
+		public Message[] Messages
+		{
+			get
+			{
+				MessageRecipient[] recipients = MessageRecipient.Find(new Hashtable {{"EmployeeID", ID}});
+				Message[] messages = new Message[recipients.Length];
+				for (int i = 0; i < recipients.Length; ++i)
+					messages[i] = recipients[i].GetMessage();
+
+				return messages;
 			}
 		}
 	}

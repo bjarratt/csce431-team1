@@ -74,12 +74,16 @@ namespace AutoTune.Models
 
 		public static Employee[] Find(Hashtable conditions)
 		{
-			return Find("Employees", conditions);
+			DatabaseModel[] models = Find("Employees", () => new Employee(), conditions);
+			Employee[] employees = new Employee[models.Length];
+			for (int i = 0; i < models.Length; ++i)
+				employees[i] = (Employee)models[i];
+			return employees;
 		}
 
 		public static Employee[] FindAll()
 		{
-			return FindAll("Employees");
+			return Find(null);
 		}
 
 		public static Employee FindByUsername(string username)

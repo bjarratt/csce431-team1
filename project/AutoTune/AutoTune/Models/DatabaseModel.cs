@@ -131,10 +131,12 @@ namespace AutoTune.Models
 			CloseConnection();
 		}
 
-		protected static Employee[] Find(string tableName, Hashtable conditions)
+		protected delegate DatabaseModel Constructor();
+
+		protected static DatabaseModel[] Find(string tableName, Constructor modelConstructor, Hashtable conditions)
 		{
 			if (conditions == null || conditions.Count == 0)
-				return FindAll(tableName);
+				return FindAll(tableName, modelConstructor);
 
 			OpenConnection();
 
@@ -144,7 +146,7 @@ namespace AutoTune.Models
 			{
 				clauses.Add(
 					string.Format("{0} = {1}",
-					              condition.Key, SqlEscaped(condition.Value)));
+					condition.Key, SqlEscaped(condition.Value)));
 			}
 
 			string whereClause = string.Join(" AND ", clauses.ToArray());
@@ -156,21 +158,21 @@ namespace AutoTune.Models
 			MySqlCommand command = new MySqlCommand(commandString, Connection);
 			MySqlDataReader reader = command.ExecuteReader();
 
-			List<Employee> employees = new List<Employee>();
+			List<DatabaseModel> models = new List<DatabaseModel>();
 
 			while (reader.Read())
 			{
-				Employee employee = new Employee();
-				employee.UpdateDatabaseFieldValues(reader);
-				employees.Add(employee);
+				DatabaseModel model = modelConstructor();
+				model.UpdateDatabaseFieldValues(reader);
+				models.Add(model);
 			}
 
 			CloseConnection();
 
-			return employees.ToArray();
+			return models.ToArray();
 		}
 
-		protected static Employee[] FindAll(string tableName)
+		private static DatabaseModel[] FindAll(string tableName, Constructor modelConstructor)
 		{
 			OpenConnection();
 
@@ -179,18 +181,18 @@ namespace AutoTune.Models
 			MySqlCommand command = new MySqlCommand(commandString, Connection);
 			MySqlDataReader reader = command.ExecuteReader();
 
-			List<Employee> employees = new List<Employee>();
+			List<DatabaseModel> models = new List<DatabaseModel>();
 
 			while (reader.Read())
 			{
-				Employee employee = new Employee();
-				employee.UpdateDatabaseFieldValues(reader);
-				employees.Add(employee);
+				DatabaseModel model = modelConstructor();
+				model.UpdateDatabaseFieldValues(reader);
+				models.Add(model);
 			}
 
 			CloseConnection();
 
-			return employees.ToArray();
+			return models.ToArray();
 		}
 
 		public static string GenerateNewSalt()

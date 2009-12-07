@@ -13,6 +13,20 @@ namespace AutoTune.Models
 		public override string TableName()
 		{ return "Messages"; }
 
+		public Employee Sender
+		{
+			get
+			{
+				return Employee.Find((int)this["Sender"]);
+			}
+		}
+
+		public string Body
+		{
+			get { return (string)this["Body"]; }
+			set { this["Body"] = value; }
+		}
+
 		public Employee[] GetRecipients()
 		{
 			return

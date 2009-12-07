@@ -1,14 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SalespersonHome.aspx.cs" Inherits="AutoTune.SalespersonHome" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Salesperson Homepage</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="SalespersonHome.aspx.cs" Inherits="AutoTune.SalespersonHome" Title="Untitled Page" %>
+<asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
+    Salesperson Homepage
+</asp:Content>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+</asp:Content>
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+	 <div>
     Salesperson Home
         <br />
         <br />
@@ -27,6 +24,5 @@
         <br />
         <asp:LinkButton ID="LinkButton2" runat="server">Logout</asp:LinkButton>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+  

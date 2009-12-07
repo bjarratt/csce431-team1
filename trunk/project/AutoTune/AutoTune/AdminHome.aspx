@@ -4,6 +4,13 @@
 </asp:Content>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
+<asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
+    You are logged in as: <br />(employee name, number)
+<br />
+<br />
+<br />
+<asp:LinkButton ID="LinkButton3" runat="server">Logout</asp:LinkButton>
+</asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>
 	<br />

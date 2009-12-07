@@ -19,6 +19,15 @@ namespace AutoTune
         {
 
         }
+        private void Logout()
+        {
+            Session["User"] = null;
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
 
     }
 }

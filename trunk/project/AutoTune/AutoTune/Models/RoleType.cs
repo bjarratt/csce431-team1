@@ -10,5 +10,11 @@ namespace AutoTune.Models
 
 		public override string TableName()
 		{ return "RoleTypes"; }
+
+		public static RoleType Find(int id)
+		{ return Find(id); }
+
+		public string Label
+		{ get { return (string)this["Label"]; } }
 	}
 }

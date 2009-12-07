@@ -11,6 +11,7 @@ namespace AutoTune.Models
 		public override string TableName()
 		{ return "Roles"; }
 
-
+		public string GetRoleType()
+		{ return RoleType.Find((int)this["RoleTypeID"]).Label; }
 	}
 }

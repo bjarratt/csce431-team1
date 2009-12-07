@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using AutoTune.Models;
 
 namespace AutoTune
 {
@@ -17,7 +18,8 @@ namespace AutoTune
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Employee user = Session["User"];
+            UserLabel.Text = string.Format("'{0}', '{0}'", user.Username, user.ID);
         }
     }
 }

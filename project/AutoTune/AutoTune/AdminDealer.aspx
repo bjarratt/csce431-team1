@@ -5,11 +5,11 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
-    You are logged in as: <br />(employee name, number)
+    You are logged in as: <br />(<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>)
 <br />
 <br />
 <br />
-<asp:LinkButton ID="LinkButton3" runat="server">Logout</asp:LinkButton>
+<asp:LinkButton ID="LinkButton1" runat="server" onclick="Logout_Click" PostBackUrl="Default.aspx">Logout</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div>
@@ -27,7 +27,5 @@
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 
             NavigateUrl="AdminHome.aspx">Return to Admin Home</asp:HyperLink>
-        <br />
-        <br />
     </div>
 </asp:Content>

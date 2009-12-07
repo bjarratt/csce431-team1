@@ -8,14 +8,14 @@
 	
 	<%--<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>--%>
 	Username:
-	<asp:TextBox ID="Username" runat="server"></asp:TextBox>
-	<asp:Button ID="LoginButton" runat="server" Text="Login" onclick="Login_Click" />
+	<asp:TextBox ID="Username" runat="server"></asp:TextBox><br /><br />
 	<br />
 	Password:
 	<asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
 	<br />
 	
-	<asp:Button ID="LogoutButton" runat="server" Text="Logout" onclick="Logout_Click" />
+	<asp:Button ID="LogoutButton" runat="server" Text="Login" 
+        onclick="Logout_Click" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <p><img src="images/auto-tune logo.jpg" alt="" width="564" height="200" /></p>

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AutoTune.Models
@@ -12,9 +13,20 @@ namespace AutoTune.Models
 		public override string TableName()
 		{ return "Dealerships"; }
 
-		public static Dealership[] Find(Hashtable conditions)
+		public static IEnumerable<Dealership> Find(Hashtable conditions)
 		{
-			return Find("Dealerships", () => new Dealership(), conditions).Cast<Dealership>().ToArray();
+			return Find("Dealerships", () => new Dealership(), conditions).Cast<Dealership>();
+		}
+
+		public IEnumerable<Employee> GetEmployees()
+		{
+			return
+				FindChildren("Employees", () => new Employee(), "Roles", "DealershipID", "EmployeeID").Cast<Employee>();
+		}
+
+		public IEnumerable<Vehicle> GetVehicles()
+		{
+			return FindChildren("Vehicles", () => new Vehicle(), "DealershipID").Cast<Vehicle>();
 		}
 	}
 }

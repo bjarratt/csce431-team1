@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -53,6 +54,35 @@ namespace AutoTune.Models
 			}
 
 			return true;
+		}
+
+		protected void AttachTo(DatabaseModel parent, string foreignKey)
+		{
+			if(!IsDatabaseField(foreignKey))
+				throw new InternalException(string.Format("Cannot attach; field {0} is not a database field.", foreignKey));
+
+			this[foreignKey] = parent.ID;
+			Commit();
+		}
+
+		protected void AttachTo(DatabaseModel parent, Constructor joinModelConstructor, string parentKey, string childKey)
+		{
+			DatabaseModel joinModel = joinModelConstructor();
+			joinModel[parentKey] = parent.ID;
+			joinModel[childKey] = ID;
+			joinModel.Commit();
+		}
+
+		protected void AttachTo(DatabaseModel parent, Constructor joinModelConstructor, string parentKey, string childKey, Hashtable payload)
+		{
+			DatabaseModel joinModel = joinModelConstructor();
+			joinModel[parentKey] = parent.ID;
+			joinModel[childKey] = ID;
+
+			foreach(DictionaryEntry entry in payload)
+				joinModel[(string)entry.Key] = entry.Value;
+
+			joinModel.Commit();
 		}
 
 		public void Commit()
@@ -155,21 +185,7 @@ namespace AutoTune.Models
 				"SELECT * FROM {0} WHERE {1}",
 				tableName, whereClause);
 
-			MySqlCommand command = new MySqlCommand(commandString, Connection);
-			MySqlDataReader reader = command.ExecuteReader();
-
-			List<DatabaseModel> models = new List<DatabaseModel>();
-
-			while (reader.Read())
-			{
-				DatabaseModel model = modelConstructor();
-				model.UpdateDatabaseFieldValues(reader);
-				models.Add(model);
-			}
-
-			CloseConnection();
-
-			return models.ToArray();
+			return ManualFind(commandString, modelConstructor);
 		}
 
 		private static DatabaseModel[] FindAll(string tableName, Constructor modelConstructor)
@@ -178,21 +194,43 @@ namespace AutoTune.Models
 
 			string commandString = string.Format("SELECT * FROM {0}", tableName);
 
-			MySqlCommand command = new MySqlCommand(commandString, Connection);
-			MySqlDataReader reader = command.ExecuteReader();
+			return ManualFind(commandString, modelConstructor);
+		}
 
-			List<DatabaseModel> models = new List<DatabaseModel>();
+		protected DatabaseModel[] FindChildren(string childTableName, Constructor childModelConstructor, string foreignKey)
+		{
+			string commandString = string.Format(
+				"SELECT * FROM {0} WHERE {1} = {2}",
+				childTableName, foreignKey, ID);
+			return ManualFind(commandString, childModelConstructor);
+		}
 
-			while (reader.Read())
-			{
-				DatabaseModel model = modelConstructor();
-				model.UpdateDatabaseFieldValues(reader);
-				models.Add(model);
-			}
+		protected DatabaseModel[] FindChildren(string childTableName, Constructor childModelConstructor, string joinTableName, string parentKey, string childKey)
+		{
+			string commandString = string.Format(
+				"SELECT {0}.* FROM {1} LEFT JOIN {0} ON {0}.ID = {1}.{2} WHERE {1}.{3} = {4}",
+				childTableName, joinTableName, childKey, parentKey, ID);
+			return ManualFind(commandString, childModelConstructor);
+		}
 
-			CloseConnection();
+		protected DatabaseModel[] FindChildren(string childTableName, Constructor childModelConstructor, string joinTableName, string parentKey, string childKey, Hashtable joinConditions, Hashtable childConditions)
+		{
+			List<string> conditions = new List<string>();
 
-			return models.ToArray();
+			foreach(DictionaryEntry entry in joinConditions)
+				conditions.Add(string.Format("{0}.{1} = {2}", joinTableName, entry.Key, SqlEscaped(entry.Value)));
+
+			foreach (DictionaryEntry entry in childConditions)
+				conditions.Add(string.Format("{0}.{1} = {2}", childTableName, entry.Key, SqlEscaped(entry.Value)));
+
+			conditions.Add(string.Format("{0}.{1} = {2}", joinTableName, parentKey, ID));
+
+			string conditionString = string.Join(" AND ", conditions.ToArray());
+
+			string commandString = string.Format(
+				"SELECT {0}.* FROM {1} LEFT JOIN {0} ON {0}.ID = {1}.{2} WHERE {3}",
+				childTableName, joinTableName, childKey, conditionString);
+			return ManualFind(commandString, childModelConstructor);
 		}
 
 		public static string GenerateNewSalt()
@@ -251,6 +289,27 @@ namespace AutoTune.Models
 				bool isValid = (bool)method.Invoke(null, new[] { value });
 				return isValid;
 			}
+		}
+
+		private static DatabaseModel[] ManualFind(string commandString, Constructor modelConstructor)
+		{
+			OpenConnection();
+
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
+			MySqlDataReader reader = command.ExecuteReader();
+
+			List<DatabaseModel> models = new List<DatabaseModel>();
+
+			while (reader.Read())
+			{
+				DatabaseModel model = modelConstructor();
+				model.UpdateDatabaseFieldValues(reader);
+				models.Add(model);
+			}
+
+			CloseConnection();
+
+			return models.ToArray();
 		}
 
 		public static string SqlEscaped(object value)
@@ -322,7 +381,7 @@ namespace AutoTune.Models
 			CloseConnection();
 		}
 
-		private void UpdateDatabaseFieldValues(MySqlDataReader reader)
+		private void UpdateDatabaseFieldValues(IDataRecord reader)
 		{
 			for (int i = 0; i < reader.FieldCount; ++i)
 			{

@@ -8,7 +8,6 @@ namespace AutoTune
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			Dealership[] dealerships = Dealership.Find(null);
 		}
 
 		protected void Login_Click(object sender, EventArgs e)

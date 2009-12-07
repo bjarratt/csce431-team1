@@ -10,5 +10,7 @@ namespace AutoTune.Models
 
 		public override string TableName()
 		{ return "Roles"; }
+
+
 	}
 }

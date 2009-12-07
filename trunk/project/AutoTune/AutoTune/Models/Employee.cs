@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -108,17 +109,29 @@ namespace AutoTune.Models
 			}
 		}
 
-		public Message[] Messages
+		public IEnumerable<Message> GetMessages()
 		{
-			get
-			{
-				MessageRecipient[] recipients = MessageRecipient.Find(new Hashtable {{"EmployeeID", ID}});
-				Message[] messages = new Message[recipients.Length];
-				for (int i = 0; i < recipients.Length; ++i)
-					messages[i] = recipients[i].GetMessage();
+			return FindChildren("Messages", () => new Message(), "MessageRecipients", "EmployeeID", "MessageID").Cast<Message>();
+		}
 
-				return messages;
-			}
+		public IEnumerable<Role> GetRoles()
+		{
+			return FindChildren("Roles", () => new Role(), "EmployeeID").Cast<Role>();
+		}
+
+		public IEnumerable<VehicleSale> GetVehicleSales()
+		{
+			return FindChildren("VehicleSale", () => new VehicleSale(), "SalespersonID").Cast<VehicleSale>();
+		}
+
+		public IEnumerable<VehicleTrade> GetInitiatedTrades()
+		{
+			return FindChildren("VehicleTrade", () => new VehicleTrade(), "Initiator").Cast<VehicleTrade>();
+		}
+
+		public IEnumerable<VehicleTrade> GetPendingTrades()
+		{
+			return FindChildren("VehicleTrade", () => new VehicleTrade(), "Target").Cast<VehicleTrade>();
 		}
 	}
 }

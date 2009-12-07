@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AutoTune.Models
@@ -11,6 +12,12 @@ namespace AutoTune.Models
 
 		public override string TableName()
 		{ return "Messages"; }
+
+		public Employee[] GetRecipients()
+		{
+			return
+				FindChildren("Employees", () => new Employee(), "MessageRecipients", "MessageID", "EmployeeID").Cast<Employee>().ToArray();
+		}
 
 		public Employee[] Recipients
 		{
@@ -27,5 +34,16 @@ namespace AutoTune.Models
 
 		public static Message Find(int id)
 		{ return (Message)Find("Messages", () => new Message(), new Hashtable { { "ID", id }}).First(); }
+
+		public void SendTo(Employee recipient)
+		{
+			AttachTo(recipient, () => new MessageRecipient(), "EmployeeID", "MessageID");
+		}
+
+		public void SendTo(IEnumerable<Employee> recipients)
+		{
+			foreach(Employee employee in recipients)
+				SendTo(employee);
+		}
 	}
 }

@@ -31,11 +31,14 @@
 		    <div id="page-bgtop">
 			    <div id="content">
 				    <div class="post">
-					    <h2 class="title"><a href="#">Welcome to the AutoTune Dealership Inventory System</a></h2>
+					    <h2 class="title"><a href="#">Welcome to the AutoTune Dealership Inventory</a></h2>
+                        <h2 class="title"><a href="#">System</a></h2>
 					    <div class="entry">
-						    <p><img src="images/auto-tune logo.jpg" alt="" width="564" height="200" /></p>
+					    <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+					    </asp:ContentPlaceHolder>
+						    <%--<p><img src="images/auto-tune logo.jpg" alt="" width="564" height="200" /></p>
 						    <p>This software will manage operations at BUKI. It will be responsible, at minimum, for keeping inventory of the cars that are present at the dealership, displaying a car's value to both management and sales teams at the dealership (they might see different variations for the same car), adding and removing managers and salesmen from the system, as well as any additional tasks the client may come up with later.</p>
-						</div>
+						--%></div>
 				    </div>
 			    </div>
 			    <!-- end div#content -->
@@ -43,10 +46,11 @@
 				    <ul>
 					    <li id="login">
 						    <h2>Login</h2>
-							    <fieldset>
+						    <asp:ContentPlaceHolder ID="LoginPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+							    <%--<fieldset>
 							    <input type="text" id="login-text" name="s" value="" />
 							    <input type="submit" id="Submit1" value="Login" />
-							    </fieldset>
+							    </fieldset>--%>
 					    </li>
 					    <li>
 						    <h2>News</h2>
@@ -71,8 +75,7 @@
 	    <!-- end div#footer -->
     </div>
     <!-- end div#wrapper -->
-        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
-        </asp:ContentPlaceHolder>
+        
     </div>
     </form>
 </body>

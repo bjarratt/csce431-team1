@@ -4,12 +4,17 @@
 </asp:Content>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
+<asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
+    You are logged in as: <br />(employee name, number)
+<br />
+<br />
+<br />
+<asp:LinkButton ID="LinkButton1" runat="server">Logout</asp:LinkButton>
+</asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div>
     Vehicle Inventory
         <br />
-        <br />
-        You are logged in as: (employee name, number)<br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 
             NavigateUrl="SalespersonHome.aspx">Return to Salesperson Home</asp:HyperLink>

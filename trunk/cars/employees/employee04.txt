@@ -1,0 +1,9 @@
+NAME:	   DONNA SUMMER
+EMAIL:     dsummer@auto-tune.com
+PHONE:     (217)-112-9824
+IMAGE:     employee04.jpg
+
+ROLE:	   MANAGER
+REQUEST:   NONE
+LOCATION:  AUTO-TUNE HOUSTON
+ID:	   123456

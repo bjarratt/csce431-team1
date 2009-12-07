@@ -1,0 +1,9 @@
+NAME:	   T-PAIN
+EMAIL:     tpain@auto-tune.com
+PHONE:     (217)-302-2200
+IMAGE:     employee03.jpg
+
+ROLE:	   SALES
+REQUEST:   NONE
+LOCATION:  AUTO-TUNE HOUSTON
+ID:	   333333

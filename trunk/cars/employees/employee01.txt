@@ -1,0 +1,9 @@
+NAME:	   RACHAEL DAWSON
+EMAIL:     rdawson@auto-tune.com
+PHONE:     (979)-867-5309
+IMAGE:     employee01.jpg
+
+ROLE:	   SALES
+REQUEST:   NONE
+LOCATION:  AUTO-TUNE COLLEGE STATION
+ID:	   872634

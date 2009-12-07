@@ -1,0 +1,9 @@
+NAME:	   JOE BLOGGS
+EMAIL:     jbloggs@auto-tune.com
+PHONE:     (979)-302-5219
+IMAGE:     employee02.jpg
+
+ROLE:	   SALES
+REQUEST:   NONE
+LOCATION:  AUTO-TUNE COLLEGE STATION
+ID:	   234619

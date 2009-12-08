@@ -27,11 +27,11 @@ namespace AutoTune
 			}
 		}
 
-		private void Logout()
-		{
-			Session["User"] = null;
-			UserLabel.Text = "You have logged out.";
-		}
+        //private void Logout()
+        //{
+        //    Session["User"] = null;
+        //    UserLabel.Text = "You have logged out.";
+        //}
 
 		protected void Logout_Click(object sender, EventArgs e)
 		{

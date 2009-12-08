@@ -13,7 +13,7 @@
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	 <div>
-    Salesperson Home
+    	<h2 class="title"><a href="#">Welcome to the AutoTune Sales Rep Home Page</a></h2>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 

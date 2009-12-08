@@ -12,29 +12,5 @@
 <asp:LinkButton ID="LinkButton1" runat="server" onclick="Logout_Click" PostBackUrl="Default.aspx">Logout</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-	<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>
-	<br />
-	Username:
-	<asp:TextBox ID="Username" runat="server"></asp:TextBox>
-	<br />
-	Password:
-	<asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-	<br />
-	<asp:Button ID="LoginButton" runat="server" Text="Login" onclick="Login_Click" />
-	<asp:Button ID="LogoutButton" runat="server" Text="Logout" onclick="Logout_Click" />
-	""
+<h2 class="title"><a href="#">Welcome to the AutoTune Admin Home Page</a></h2>
 </asp:Content>
-<%--
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Administrator Homepage</title>
-    <link href="default.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-    </form>
-</body>
-</html>
---%>

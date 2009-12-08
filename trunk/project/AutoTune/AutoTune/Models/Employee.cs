@@ -119,6 +119,15 @@ namespace AutoTune.Models
 			return FindChildren("Roles", () => new Role(), "EmployeeID").Cast<Role>();
 		}
 
+		public bool IsAdmin()
+		{
+			IEnumerable<Role> roles = GetRoles();
+			foreach(Role role in roles)
+				if(role.ID == 2)
+					return true;
+			return false;
+		}
+
 		public IEnumerable<VehicleSale> GetVehicleSales()
 		{
 			return FindChildren("VehicleSale", () => new VehicleSale(), "SalespersonID").Cast<VehicleSale>();

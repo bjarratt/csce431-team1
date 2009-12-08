@@ -14,8 +14,8 @@
 	<asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
 	<br />
 	
-	<asp:Button ID="LogoutButton" runat="server" Text="Login" 
-        onclick="Logout_Click" />
+	<asp:Button ID="LoginButton" runat="server" Text="Login" 
+        onclick="Login_Click" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <p><img src="images/auto-tune logo.jpg" alt="" width="564" height="200" /></p>

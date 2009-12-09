@@ -6,8 +6,8 @@ Messaging
 </asp:Content>
 
 <asp:Content ID="MessageButton" ContentPlaceHolderID="MessageContentPlaceholder" runat="server">
-<asp:LinkButton ID="LinkButton2" runat="server" OnClick="MessageClick" Height="16px"
-Width="70px">Messaging</asp:LinkButton>
+<li class="active"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="MessageClick" Height="16px"
+Width="70px">Messaging</asp:LinkButton></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2 class="title"><a href="#">Welcome to your AutoTune Messaging Page!</a></h2>

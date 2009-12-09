@@ -21,7 +21,7 @@ namespace AutoTune
             Employee user = (Employee)Session["User"];
             if (user != null)
             {
-                Label1.Text.Equals(user.Username);
+                Label1.Text = user.Username;
             }
         }
         private void Logout()
@@ -33,6 +33,10 @@ namespace AutoTune
         protected void Logout_Click(object sender, EventArgs e)
         {
             Logout();
+        }
+        protected void MessageClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Messaging.aspx");
         }
     }
 }

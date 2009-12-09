@@ -27,18 +27,18 @@ namespace AutoTune
             {
                 Response.Redirect("Default.aspx");
             }
-            if(user.IsAdmin() )
+            if(user.IsAdmin())
             {
                 Response.Redirect("AdminHome.aspx");
             }
-            //if(user == )
-            //{
-            //    Response.Redirect("ManagerHome.aspx");
-            //}
-            //if(user == )
-            //{
-            //    Response.Redirect("AdminHome.aspx");
-            //}
+            if(user.IsManager())
+            {
+                Response.Redirect("ManagerHome.aspx");
+            }
+            if(user.IsSalesperson())
+            {
+                Response.Redirect("SalespersonHome.aspx");
+            }
         }
     }
 }

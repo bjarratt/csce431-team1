@@ -11,10 +11,10 @@ Width="70px">Messaging</asp:LinkButton></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2 class="title"><a href="#">Welcome to your AutoTune Messaging Page!</a></h2>
-&nbsp;<asp:Panel ID="Panel1" runat="server" Height="467px">
+&nbsp;<asp:Panel ID="MessagesTable" runat="server" Height="467px">
         <asp:Label ID="MessagesBox" runat="server" BorderStyle="Double" 
-            Font-Bold="False" Font-Italic="False" Font-Size="Medium" Height="210px" 
-            Width="574px"></asp:Label>
+            Font-Bold="False" Font-Italic="False" Font-Size="Medium" Height="184px" 
+            Width="421px"></asp:Label>
         <br />
         <br />
         <asp:Button ID="MarkAsRead" runat="server" onclick="MarkAsRead_Click" 

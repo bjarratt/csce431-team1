@@ -27,6 +27,8 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:Button ID="Button1" runat="server" Text="Add Vehicle" />
+        <asp:Table ID="table1" runat="server">
+        </asp:Table>
         <br />
         Vehicle Info Goes Here....
         <br />

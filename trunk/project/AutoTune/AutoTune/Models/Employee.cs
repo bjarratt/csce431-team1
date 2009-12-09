@@ -114,6 +114,11 @@ namespace AutoTune.Models
 			return FindChildren("Messages", () => new Message(), "MessageRecipients", "EmployeeID", "MessageID").Cast<Message>();
 		}
 
+		public IEnumerable<Message> GetSentMessages()
+		{
+			return FindChildren("Messages", () => new Message(), "Sender").Cast<Message>();
+		}
+
 		public IEnumerable<Role> GetRoles()
 		{
 			return FindChildren("Roles", () => new Role(), "EmployeeID").Cast<Role>();

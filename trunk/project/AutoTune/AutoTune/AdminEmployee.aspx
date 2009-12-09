@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="AdminEmployee.aspx.cs" Inherits="AutoTune.AdminEmployee" Title="Untitled Page" %>
+<%@ Import Namespace="AutoTune.Models"%>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
     Administrator Employee List
 </asp:Content>
@@ -28,7 +29,11 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <asp:Button ID="Button1" runat="server" Text="Add Employee" />
         <br />
-        Employee Info Goes Here....
+        <asp:Repeater ID="EmployeesRepeater" runat="server">
+        <ItemTemplate>
+        <%# ((Employee)Container.DataItem).FullName %><br />
+        </ItemTemplate>
+        </asp:Repeater>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 

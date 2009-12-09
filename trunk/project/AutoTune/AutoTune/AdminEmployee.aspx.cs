@@ -23,7 +23,7 @@ namespace AutoTune
 						{
 							Label1.Text = user.Username;
 						}
-        	EmployeesRepeater.DataSource = Employee.FindAll();
+        	EmployeesRepeater.DataSource = Employee.FindAllNonAdmin();
         	EmployeesRepeater.DataBind();
         }
         private void Logout()

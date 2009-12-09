@@ -60,8 +60,32 @@ namespace AutoTune.Models
 
 		public Dealership Location
 		{
-			get { return Dealership.Find((int?)this["DealershipID"]); }
+			get
+			{
+				if(this["DealershipID"].GetType() == typeof(DBNull))
+					return null;
+				else
+					return Dealership.Find((int?)this["DealershipID"]);
+			}
 			set { this["DealershipID"] = value.ID; }
+		}
+
+		public string Email
+		{
+			get { return (string) this["Email"]; }
+			set { this["Email"] = value; }
+		}
+
+		public string Phone
+		{
+			get { return (string)this["Phone"]; }
+			set { this["Phone"] = value; }
+		}
+
+		public string ImageUri
+		{
+			get { return (string)this["ImageUri"]; }
+			set { this["ImageUri"] = value; }
 		}
 
 		public Employee()
@@ -108,6 +132,17 @@ namespace AutoTune.Models
 		public static Employee[] FindAll()
 		{
 			return Find(null);
+		}
+
+		public static IEnumerable<Employee> FindAllNonAdmin()
+		{
+			IEnumerable<Employee> allEmployees = FindAll();
+			List<Employee> employees = new List<Employee>();
+			foreach(Employee employee in allEmployees)
+				if(employee.Location != null)
+					employees.Add(employee);
+
+			return employees;
 		}
 
 		public static Employee FindByUsername(string username)

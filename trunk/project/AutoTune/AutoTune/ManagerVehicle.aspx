@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="SalespersonVehicle.aspx.cs" Inherits="AutoTune.SalespersonEmployee" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="ManagerVehicle.aspx.cs" Inherits="AutoTune.WebForm6" Title="Untitled Page" %>
 <%@ Import Namespace="System.ComponentModel"%>
 <%@ Import Namespace="AutoTune.Models"%>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
-    Salesperson Vehicle List
+    Manager Vehicle List
 </asp:Content>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
@@ -31,7 +31,7 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 
-            NavigateUrl="SalespersonHome.aspx">Return to Salesperson Home</asp:HyperLink>
+            NavigateUrl="ManagerHome.aspx">Return to Manager Home</asp:HyperLink>
         <br />
         <br />
         <asp:Repeater ID="VehiclesRepeater" runat="server">
@@ -50,7 +50,8 @@ Width="70px">Messaging</asp:LinkButton>
 						<b>Book Value: </b> <em><%# ((Vehicle)Container.DataItem).BookValue %></em><br />
 						<b>Base Value: </b> <em><%# ((Vehicle)Container.DataItem).BaseValue %></em><br />
 						<b>Discount Value: </b> <em><%# ((Vehicle)Container.DataItem).DiscountValue %></em><br />
-						</td>
+						<a href="VehicleEdit.aspx?id=<%# ((Vehicle)Container.DataItem).ID %>">Edit</a>
+					</td>
 				</tr>
 			</ItemTemplate>
 			<FooterTemplate>
@@ -60,6 +61,6 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 
-            NavigateUrl="SalespersonHome.aspx">Return to Salesperson Home</asp:HyperLink>
+            NavigateUrl="ManagerHome.aspx">Return to Manager Home</asp:HyperLink>
     </div>
 </asp:Content>

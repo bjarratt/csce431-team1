@@ -31,7 +31,7 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 
-            NavigateUrl="SalespersonVehicle.aspx">View Vehicle Inventory</asp:HyperLink>
+            NavigateUrl="ManagerVehicle.aspx">View Vehicle Inventory</asp:HyperLink>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 

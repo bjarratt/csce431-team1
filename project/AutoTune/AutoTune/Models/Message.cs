@@ -19,6 +19,10 @@ namespace AutoTune.Models
 			{
 				return Employee.Find((int)this["Sender"]);
 			}
+			set
+			{
+				this["Sender"] = value.ID;
+			}
 		}
 
 		public string Body

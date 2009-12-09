@@ -22,6 +22,8 @@ namespace AutoTune
             if (user != null)
             {
                 Label1.Text = user.Username;
+                EmployeesRepeater.DataSource = Employee.FindAllNonAdmin();
+                EmployeesRepeater.DataBind();
             }
             else
             {

@@ -27,7 +27,7 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink4" runat="server" 
-            NavigateUrl="ManagerDealer.aspx">View Dealerships</asp:HyperLink>
+            NavigateUrl="ManagerDealer.aspx">View Dealership</asp:HyperLink>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 

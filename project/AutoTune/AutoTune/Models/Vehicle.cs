@@ -58,7 +58,13 @@ namespace AutoTune.Models
 
 		public string Trim
 		{
-			get { return (string)this["Trim"]; }
+			get
+			{
+				if (this["Trim"].GetType() == typeof (DBNull))
+					return null;
+				else
+					return (string) this["Trim"];
+			}
 			set { this["Trim"] = value; }
 		}
 
@@ -83,7 +89,13 @@ namespace AutoTune.Models
 
 		public string ImageUri
 		{
-			get { return (string)this["ImageUri"]; }
+			get
+			{
+				if (this["ImageUri"].GetType() == typeof (DBNull))
+					return null;
+				else
+					return (string) this["ImageUri"];
+			}
 			set { this["ImageUri"] = value; }
 		}
 

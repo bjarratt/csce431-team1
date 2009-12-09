@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -31,18 +32,17 @@ namespace AutoTune
 
         private void UpdateDataBindings()
         {
-            DealershipsRepeater.DataSource = Dealership.FindAll();
+        	Employee user = (Employee) Session["User"];
+        	DealershipsRepeater.DataSource = new List<Dealership>(1) {user.Location};
             DealershipsRepeater.DataBind();
-            DealershipBox.DataSource = Dealership.FindAll();
-            DealershipBox.DataTextField = "Name";
-            DealershipBox.DataValueField = "ID";
-            DealershipBox.DataBind();
         }
 
         protected void AddVehicle(object sender, EventArgs e)
         {
             Vehicle v = new Vehicle();
-            v["DealershipID"] = DealershipBox.SelectedItem.Value;
+						Employee user = (Employee)Session["User"];
+
+        	v.Location = user.Location;
             v.Year = int.Parse(Year.Text);
             v.Make = Make.Text;
             v.Model = Model.Text;
@@ -50,7 +50,10 @@ namespace AutoTune
             v.BookValue = int.Parse(BookVal.Text);
             v.BaseValue = int.Parse(BaseVal.Text);
             v.DiscountValue = int.Parse(DisVal.Text);
+        	v.Trim = Trim.Text;
             v.Commit();
+
+        	Response.Redirect("ManagerVehicle.aspx");
             UpdateDataBindings();
         }
         private void Logout()

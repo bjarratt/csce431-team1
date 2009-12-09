@@ -165,5 +165,10 @@ namespace AutoTune.Models
 		{
 			return FindChildren("VehicleTrade", () => new VehicleTrade(), "Target").Cast<VehicleTrade>();
 		}
+
+		public IEnumerable<Dealership> GetLocations()
+		{
+			return FindChildren("Dealerships", () => new Dealership(), "Roles", "EmployeeID", "DealershipID").Cast<Dealership>();
+		}
 	}
 }

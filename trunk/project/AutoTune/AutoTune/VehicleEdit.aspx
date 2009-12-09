@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="VehicleEdit.aspx.cs" Inherits="AutoTune.WebForm5" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="VehicleEdit.aspx.cs" Inherits="AutoTune.AddDealership" Title="Untitled Page" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
 Edit Vehicle
 </asp:Content>

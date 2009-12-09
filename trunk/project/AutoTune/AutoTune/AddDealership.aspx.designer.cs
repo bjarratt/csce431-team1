@@ -11,7 +11,7 @@
 namespace AutoTune {
     
     
-    public partial class WebForm5 {
+    public partial class AddDealership {
         
         /// <summary>
         /// LinkButton2 control.

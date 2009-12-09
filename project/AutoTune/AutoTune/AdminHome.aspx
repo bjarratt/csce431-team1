@@ -41,5 +41,9 @@ Width="70px">Messaging</asp:LinkButton>
             NavigateUrl= "Messaging.aspx" >Messaging</asp:HyperLink>
         <br />
         <br />
+        <asp:HyperLink ID="AssignPassword" runat="server"
+            NavigateUrl= "AdminPWAssign.aspx" >Assign Employee a Password</asp:HyperLink>
+        <br />
+        <br />
     </div>
 </asp:Content>

@@ -183,6 +183,13 @@
     <Compile Include="AccessDenied.aspx.designer.cs">
       <DependentUpon>AccessDenied.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPWAssign.aspx.cs">
+      <DependentUpon>AdminPWAssign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPWAssign.aspx.designer.cs">
+      <DependentUpon>AdminPWAssign.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminDealer.aspx" />
@@ -202,6 +209,7 @@
     <Content Include="VehiclesTest.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="AccessDenied.aspx" />
+    <Content Include="AdminPWAssign.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -106,6 +106,13 @@
     <Compile Include="ManagerHome.aspx.designer.cs">
       <DependentUpon>ManagerHome.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManagerVehicle.aspx.cs">
+      <DependentUpon>ManagerVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerVehicle.aspx.designer.cs">
+      <DependentUpon>ManagerVehicle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\DatabaseModel.cs" />
     <Compile Include="Layout.Master.cs">
       <DependentUpon>Layout.Master</DependentUpon>
@@ -158,6 +165,13 @@
     <Compile Include="Messaging.aspx.designer.cs">
       <DependentUpon>Messaging.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VehicleEdit.aspx.cs">
+      <DependentUpon>VehicleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehicleEdit.aspx.designer.cs">
+      <DependentUpon>VehicleEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VehiclesTest.aspx.cs">
       <DependentUpon>VehiclesTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -205,10 +219,12 @@
     <Content Include="Default.aspx" />
     <Content Include="ManagerDealer.aspx" />
     <Content Include="ManagerHome.aspx" />
+    <Content Include="ManagerVehicle.aspx" />
     <Content Include="SalespersonEmployee.aspx" />
     <Content Include="SalespersonVehicle.aspx" />
     <Content Include="SalespersonHome.aspx" />
     <Content Include="Messaging.aspx" />
+    <Content Include="VehicleEdit.aspx" />
     <Content Include="VehiclesTest.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="AccessDenied.aspx" />

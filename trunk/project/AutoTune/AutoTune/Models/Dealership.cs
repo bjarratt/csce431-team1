@@ -60,5 +60,10 @@ namespace AutoTune.Models
 			else
 				return (Dealership)Find("Dealerships", () => new Dealership(), new Hashtable {{"ID", id}}).First();
 		}
+
+		public static IEnumerable<Dealership> FindAll()
+		{
+			return Find("Dealerships", () => new Dealership(), null).Cast<Dealership>();
+		}
 	}
 }

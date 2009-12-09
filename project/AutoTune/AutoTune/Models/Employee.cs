@@ -7,7 +7,7 @@ namespace AutoTune.Models
 {
 	public class Employee : DatabaseModel
 	{
-		private static readonly string[] DatabaseFields = {"Username", "PasswordHash", "Salt", "TemporaryHash"};
+		private static readonly string[] DatabaseFields = {"Username", "PasswordHash", "Salt", "TemporaryHash", "DealershipID", "IsManager"};
 		public override bool IsDatabaseField(string fieldName)
 		{
 			return DatabaseFields.Contains(fieldName);
@@ -16,6 +16,12 @@ namespace AutoTune.Models
 		public override string TableName()
 		{
 			return "Employees";
+		}
+
+		public bool IsManager
+		{
+			get { return (bool)this["IsManager"]; }
+			set { this["IsManager"] = value; }
 		}
 
 		public string Username
@@ -43,6 +49,12 @@ namespace AutoTune.Models
 		{
 			get { return (string)this["TemporaryHash"]; }
 			set { this["TemporaryHash"] = value; }
+		}
+
+		public Dealership Location
+		{
+			get { return Dealership.Find((int?)this["DealershipID"]); }
+			set { this["DealershipID"] = value.ID; }
 		}
 
 		public Employee()
@@ -132,29 +144,7 @@ namespace AutoTune.Models
 
 		public bool IsAdmin()
 		{
-			IEnumerable<Role> roles = GetRoles();
-			foreach(Role role in roles)
-				if ((int)role["RoleTypeID"] == 2)
-					return true;
-			return false;
-		}
-
-		public bool IsManager()
-		{
-			IEnumerable<Role> roles = GetRoles();
-			foreach(Role role in roles)
-				if((int)role["RoleTypeID"] == 3)
-					return true;
-			return false;
-		}
-
-		public bool IsSalesperson()
-		{
-			IEnumerable<Role> roles = GetRoles();
-			foreach (Role role in roles)
-				if ((int)role["RoleTypeID"] == 1)
-					return true;
-			return false;
+			return this["DealershipID"] == null;
 		}
 
 		public IEnumerable<VehicleSale> GetVehicleSales()

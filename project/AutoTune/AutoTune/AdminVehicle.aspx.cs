@@ -18,7 +18,7 @@ namespace AutoTune
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Employee user = (Employee)Session["User"];
+            /*Employee user = (Employee)Session["User"];
             if (user != null)
             {
                 Label1.Text = user.Username;
@@ -64,7 +64,7 @@ namespace AutoTune
                 //currentRow.Cells.Add(new TableCell(new Paragraph(new Run("TRADE STAT"))));
 
 
-            }
+            }*/
         }
         private void Logout()
         {

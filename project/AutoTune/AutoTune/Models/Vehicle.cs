@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -92,6 +93,11 @@ namespace AutoTune.Models
 		public static IEnumerable<Vehicle> FindAll()
 		{
 			return Find("Vehicles", () => new Vehicle(), null).Cast<Vehicle>();
+		}
+
+		public static Vehicle Find(int id)
+		{
+			return (Vehicle)Find("Vehicles", () => new Vehicle(), new Hashtable {{"ID", id}}).First();
 		}
 
 		public override string ToString()

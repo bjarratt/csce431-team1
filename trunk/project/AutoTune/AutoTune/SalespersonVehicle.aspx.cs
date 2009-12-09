@@ -23,6 +23,10 @@ namespace AutoTune
             {
                 Label1.Text = user.Username;
             }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
         private void Logout()
         {

@@ -24,6 +24,10 @@ namespace AutoTune
                 Label1.Text = user.Username;
                 Label1.Font.Bold = true;
             }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
 
         }
         private void Logout()

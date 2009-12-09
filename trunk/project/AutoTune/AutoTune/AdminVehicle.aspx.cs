@@ -17,7 +17,11 @@ namespace AutoTune
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Employee user = (Employee)Session["User"];
+            if (user != null)
+            {
+                Label1.Text.Equals(user.Username);
+            }
         }
         private void Logout()
         {

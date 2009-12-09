@@ -17,6 +17,9 @@
 	<br />
 	<asp:Button ID="LoginButton" runat="server" Text="Login" 
         onclick="Login_Click" />
+    <br />
+    <br />
+    <asp:Label ID="AuthenticationLabel" runat="server" Text=""></asp:Label>
     
     
 </asp:Content>

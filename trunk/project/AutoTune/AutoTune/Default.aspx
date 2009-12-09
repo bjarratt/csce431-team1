@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AutoTune.WebForm1" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AutoTune.Default" Title="Untitled Page" %>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
     AutoTune
 </asp:Content>
@@ -19,9 +19,9 @@
         onclick="Login_Click" />
     <br />
     <br />
-    <asp:Label ID="AuthenticationLabel" runat="server" Text=""></asp:Label>
-    
-    
+    <asp:Label ID="AuthenticationLabel" runat="server" Text=""></asp:Label><br />
+    <asp:HyperLink NavigateUrl="~/ResetPassword.aspx" runat="server">Reset Password</asp:HyperLink>
+    <br /><br /><br />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <p><img src="images/auto-tune logo.jpg" alt="" width="564" height="200" /></p>

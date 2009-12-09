@@ -70,7 +70,13 @@ namespace AutoTune.Models
 		}
 		public string TemporaryHash
 		{
-			get { return (string)this["TemporaryHash"]; }
+			get
+			{
+				if (this["TemporaryHash"].GetType() == typeof (DBNull))
+					return null;
+				else
+					return (string) this["TemporaryHash"];
+			}
 			set { this["TemporaryHash"] = value; }
 		}
 

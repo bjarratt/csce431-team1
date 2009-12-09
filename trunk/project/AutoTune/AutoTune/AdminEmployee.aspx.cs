@@ -45,5 +45,15 @@ namespace AutoTune
         {
             Response.Redirect("Messaging.aspx");
         }
+
+				protected void Button1_Click(object sender, EventArgs e)
+				{
+
+				}
+
+			protected void ResetPasswordClick(object sender, EventArgs e)
+			{
+				
+			}
     }
 }

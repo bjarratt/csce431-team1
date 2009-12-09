@@ -34,13 +34,14 @@ Width="70px">Messaging</asp:LinkButton>
             NavigateUrl="AdminHome.aspx">Return to Admin Home</asp:HyperLink>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Add Employee" />
+        <asp:Button ID="Button1" runat="server" Text="Add Employee" 
+				onclick="Button1_Click" />
         <br />
         <asp:Repeater ID="EmployeesRepeater" runat="server">
         <ItemTemplate>
         <div style="border: 1px solid #000000; margin: 16px; padding: 8px;">
 					<h2><%# ((Employee)Container.DataItem).FullName %></h2>
-					<b>Username: </b> <em><%# ((Employee)Container.DataItem).Username %></em><br />
+					<b>Username: </b> <em><%# ((Employee)Container.DataItem).Username %></em> <a href="SetTempPass.aspx?id=<%# ((Employee)Container.DataItem).ID %>">Assign Temporary Password</a>
 					<b>Location: </b> <em><%# ((Employee)Container.DataItem).Location.Name %></em><br />
 					<b>Email: </b> <em><%# ((Employee)Container.DataItem).Email %></em><br />
 					<b>Phone: </b> <em><%# ((Employee)Container.DataItem).Phone %></em><br />

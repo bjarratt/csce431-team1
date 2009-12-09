@@ -1,0 +1,7 @@
+DAVID - schedule/planning/managment
+BRANDON- interface
+NATHAN - core requirements/underlying database schema
+CHRIS - bug reports/testing
+
+EVLAUATION
+what we included/left out

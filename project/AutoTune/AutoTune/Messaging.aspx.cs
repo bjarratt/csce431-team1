@@ -19,27 +19,35 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
             Employee user = (Employee)Session["User"];
-            String m = "";
-            try
+            if (user == null)
+                Response.Redirect("default.aspx");
+            else
             {
+                String m = "";
+
                 IEnumerable<Message> messages = user.GetMessages();
 
-                if (messages.Count() <= 10)
-                    foreach (Message message in messages)
-                        m = m + message.Body + "\n";
-                else
+                if (messages != null)
                 {
-                    for (int i = messages.Count() - 11; i < messages.Count(); i++)
+                    if (messages.Count() <= 10)
+                        foreach (Message message in messages)
+                            m = m + message.Body + "\n";
+                    else
                     {
-                        Message message = messages.ElementAt(i);
-                        m = m + message.Body + "\n";
+                        for (int i = messages.Count() - 11; i < messages.Count(); i++)
+                        {
+                            Message message = messages.ElementAt(i);
+                            string messageSender = message.Sender.Username;
+                            string messageBody = message.Body;
+                            m = m + string.Format(
+                                "<b>From: {0}</b>:<br />Message:<br />{1}<br />",
+                                messageSender, messageBody) + "\n";
+                        }
                     }
                 }
+
+                MessagesBox.Text = m;
             }
-            catch (Exception ex)
-            {
-            }
-            MessagesBox.Text = m;
         }
 
         protected void SendButton_Click(object sender, EventArgs e)
@@ -58,9 +66,14 @@ namespace AutoTune
             }
             
             newMessage.Body = MessageText;
-            newMessage.Sender = User;
+            newMessage.Sender = (Employee)Session["User"];
             newMessage.Commit();
             newMessage.SendTo(recipients);
+        }
+
+        protected void MessagesBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,7 +22,8 @@
 			    <ul>
 				    <li class="active">
                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="HomeClick">Home</asp:LinkButton><%--<a href="Default.aspx">Home</a>--%></li>
-				    <li><a href="#">Messaging</a></li>
+                        <asp:ContentPlaceHolder ID="MessageContentPlaceholder" runat="server">
+                        </asp:ContentPlaceHolder>
 			    </ul>
 		    </div>
 		    <!-- end div#menu -->

@@ -4,11 +4,16 @@ Messaging
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
+<asp:Content ID="MessageButton" ContentPlaceHolderID="MessageContentPlaceholder" runat="server">
+<asp:LinkButton ID="LinkButton2" runat="server" OnClick="HomeClick" Height="16px"
+Width="70px">Messaging</asp:LinkButton>
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-<h2 class="title"><a href="#">Welcome to your AutoTune Messaging Page!</a></h2>
+    <h2 class="title"><a href="#">Welcome to your AutoTune Messaging Page!</a></h2>
 &nbsp;<asp:Panel ID="Panel1" runat="server" Height="467px">
         <asp:TextBox ID="MessagesBox" runat="server" BorderStyle="Double" 
-            Height="105px" Width="574px"></asp:TextBox>
+            Font-Bold="True" Font-Italic="True" Font-Size="Medium" Height="105px" 
+            ontextchanged="MessagesBox_TextChanged" Width="574px">dfadfads</asp:TextBox>
         <br />
         <br />
         <br />

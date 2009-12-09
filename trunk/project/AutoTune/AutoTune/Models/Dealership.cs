@@ -19,6 +19,24 @@ namespace AutoTune.Models
 			set { this["Name"] = value; }
 		}
 
+		public string Location
+		{
+			get { return (string)this["Location"]; }
+			set { this["Location"] = value; }
+		}
+
+		public string Email
+		{
+			get { return (string)this["Email"]; }
+			set { this["Email"] = value; }
+		}
+
+		public string Phone
+		{
+			get { return (string)this["Phone"]; }
+			set { this["Phone"] = value; }
+		}
+
 		public static IEnumerable<Dealership> Find(Hashtable conditions)
 		{
 			return Find("Dealerships", () => new Dealership(), conditions).Cast<Dealership>();

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="AdminDealer.aspx.cs" Inherits="AutoTune.AdminDealer" Title="Untitled Page" %>
+<%@ Import Namespace="AutoTune.Models"%>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
     Administrator Dealership List
 </asp:Content>
@@ -28,7 +29,17 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <asp:Button ID="Button1" runat="server" Text="Add Dealership" />
         <br />
-        Dealership Info Goes Here....
+        <asp:Repeater ID="DealershipsRepeater" runat="server">
+					<ItemTemplate>
+					<div style="border: 1px solid #000000; margin: 16px; padding: 8px;">
+						<h2><%# ((Dealership)Container.DataItem).Name) %></h2>
+						<b>Location: </b><em><%# ((Dealership)Container.DataItem).Location) %></em><br />
+						<b>Location: </b><em><%# ((Dealership)Container.DataItem).Email) %></em><br />
+						<b>Location: </b><em><%# ((Dealership)Container.DataItem).Phone) %></em><br />
+						<a href="DealerEdit.aspx?id=<%# ((Dealership)Container.DataItem).ID) %>">Edit</a>
+					</div>
+					</ItemTemplate>
+        </asp:Repeater>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 

@@ -156,6 +156,13 @@
     <Compile Include="VehiclesTest.aspx.designer.cs">
       <DependentUpon>VehiclesTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DealerEdit.aspx.cs">
+      <DependentUpon>DealerEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DealerEdit.aspx.designer.cs">
+      <DependentUpon>DealerEdit.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminDealer.aspx" />
@@ -171,6 +178,7 @@
     <Content Include="SalespersonHome.aspx" />
     <Content Include="Messaging.aspx" />
     <Content Include="VehiclesTest.aspx" />
+    <Content Include="DealerEdit.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

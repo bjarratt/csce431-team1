@@ -135,6 +135,15 @@ namespace AutoTune.Models
 			return PasswordRegex.Match(password).Success;
 		}
 
+		public static bool IsValidFullName(string fullName)
+		{ return fullName != null; }
+
+		public static bool IsValidEmail(string email)
+		{ return email != null; }
+
+		public static bool IsValidPhone(string phone)
+		{ return phone != null; }
+
 		public static Employee Find(int id)
 		{
 			return (Employee)Find("Employees", () => new Employee(), new Hashtable {{"ID", id}}).First();
@@ -198,11 +207,6 @@ namespace AutoTune.Models
 			return FindChildren("Messages", () => new Message(), "Sender").Cast<Message>();
 		}
 
-		public IEnumerable<Role> GetRoles()
-		{
-			return FindChildren("Roles", () => new Role(), "EmployeeID").Cast<Role>();
-		}
-
 		public bool IsAdmin()
 		{
 			return this["DealershipID"].GetType() == typeof(DBNull);
@@ -211,16 +215,6 @@ namespace AutoTune.Models
 		public IEnumerable<VehicleSale> GetVehicleSales()
 		{
 			return FindChildren("VehicleSale", () => new VehicleSale(), "SalespersonID").Cast<VehicleSale>();
-		}
-
-		public IEnumerable<VehicleTrade> GetInitiatedTrades()
-		{
-			return FindChildren("VehicleTrade", () => new VehicleTrade(), "Initiator").Cast<VehicleTrade>();
-		}
-
-		public IEnumerable<VehicleTrade> GetPendingTrades()
-		{
-			return FindChildren("VehicleTrade", () => new VehicleTrade(), "Target").Cast<VehicleTrade>();
 		}
 
 		public IEnumerable<Dealership> GetLocations()

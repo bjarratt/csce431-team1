@@ -58,7 +58,10 @@ namespace AutoTune.Models
 		}
 
 		public Employee()
-		{ Salt = GenerateNewSalt(); }
+		{
+			Salt = GenerateNewSalt();
+			IsManager = false;
+		}
 
 		public static Employee Authenticate(string username, string password)
 		{

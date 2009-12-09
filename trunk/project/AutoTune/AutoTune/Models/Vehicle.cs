@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AutoTune.Models
 {
@@ -10,5 +11,10 @@ namespace AutoTune.Models
 
 		public override string TableName()
 		{ return "Vehicles"; }
+
+		public static IEnumerable<Vehicle> FindAll()
+		{
+			return Find("Vehicles", () => new Vehicle(), null).Cast<Vehicle>();
+		}
 	}
 }

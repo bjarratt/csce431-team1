@@ -22,6 +22,8 @@ namespace AutoTune
             if (user != null && user.IsAdmin())
             {
                 Label1.Text = user.Username;
+                VehiclesRepeater.DataSource = Vehicle.FindAll();
+                VehiclesRepeater.DataBind();
             }
             else
             {

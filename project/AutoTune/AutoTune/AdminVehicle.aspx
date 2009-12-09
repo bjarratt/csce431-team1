@@ -1,4 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="AdminVehicle.aspx.cs" Inherits="AutoTune.AdminVehicle" Title="Untitled Page" %>
+<%@ Import Namespace="System.ComponentModel"%>
+<%@ Import Namespace="AutoTune.Models"%>
+
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
     Administrator Vehicle List
 </asp:Content>
@@ -32,11 +35,29 @@ Width="70px">Messaging</asp:LinkButton>
             NavigateUrl="AdminHome.aspx">Return to Admin Home</asp:HyperLink>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Add Vehicle" />
-        <asp:Table ID="table1" runat="server">
-        </asp:Table>
-        <br />
-        Vehicle Info Goes Here....
+        <asp:Repeater ID="VehiclesRepeater" runat="server">
+			<HeaderTemplate>
+				<table style="margin: auto; width: 75%;">
+			</HeaderTemplate>
+			<ItemTemplate>
+				<tr>
+					<td colspan="2"><h2><%# ((Vehicle)Container.DataItem).ToString() %></h2></td>
+				</tr>
+				<tr>
+					<td><img alt="<%# ((Vehicle)Container.DataItem).ToString() %>" src="images/Vehicles/<%# ((Vehicle)Container.DataItem).ImageUri %>" width="256" /></td>
+					<td align="left">
+					    <b>VIN: </b> <em><%# ((Vehicle)Container.DataItem).Identifier %></em><br />
+						<b>Trim: </b> <em><%# ((Vehicle)Container.DataItem).Trim %></em><br />
+						<b>Book Value: </b> <em><%# ((Vehicle)Container.DataItem).BookValue %></em><br />
+						<b>Base Value: </b> <em><%# ((Vehicle)Container.DataItem).BaseValue %></em><br />
+						<b>Discount Value: </b> <em><%# ((Vehicle)Container.DataItem).DiscountValue %></em><br />
+					</td>
+				</tr>
+			</ItemTemplate>
+			<FooterTemplate>
+				</table>
+			</FooterTemplate>
+			</asp:Repeater>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 

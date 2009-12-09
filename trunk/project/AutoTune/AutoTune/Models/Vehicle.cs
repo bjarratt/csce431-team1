@@ -6,7 +6,7 @@ namespace AutoTune.Models
 {
 	public class Vehicle : DatabaseModel
 	{
-		private static readonly string[] DatabaseFields = {"VehicleID", "VehicleTradeID"};
+		private static readonly string[] DatabaseFields = {"DealershipID", "Identifier", "Year", "Make", "Model", "Trim", "BookValue", "BaseValue", "DiscountValue", "ImageUri", "VehicleSaleID"};
 		public override bool IsDatabaseField(string fieldName)
 		{ return DatabaseFields.Contains(fieldName); }
 

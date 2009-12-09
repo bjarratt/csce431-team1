@@ -41,9 +41,30 @@ namespace AutoTune.Models
 		public int? ID { get { return (int?)Values["ID"]; } }
 		public DateTime? Added { get { return (DateTime?)Values["Added"]; } }
 
+		/// <summary>
+		/// This is overridden in subclasses to determine which fields
+		/// are to be stored in the database, and which are utility
+		/// fields only used within the C# instances. For example,
+		/// the Employee class has a Password field that is not saved;
+		/// only the PasswordHash is saved, so IsDatabaseField("Password")
+		/// will return false.
+		/// </summary>
+		/// <param name="fieldName">The column name to be checked.</param>
+		/// <returns>True if the field needs to be saved to the database.</returns>
 		public abstract bool IsDatabaseField(string fieldName);
+
+		/// <summary>
+		/// Overridden by subclasses to provide the name of the MySQL table
+		/// corresponding to that class.
+		/// </summary>
+		/// <returns>The table name as a string.</returns>
 		public abstract string TableName();
 
+		/// <summary>
+		/// Runs any field validators found in a subclass.
+		/// Finds field validators through introspection.
+		/// </summary>
+		/// <returns>False if any field validator returns false.</returns>
 		public bool AllFieldsAreValid()
 		{
 			FieldInfo[] fields = GetType().GetFields();
@@ -56,6 +77,11 @@ namespace AutoTune.Models
 			return true;
 		}
 
+		/// <summary>
+		/// Sets the foreign key of this row to the id of the desired parent.
+		/// </summary>
+		/// <param name="parent">The parent row to be attached to.</param>
+		/// <param name="foreignKey">The column name of the foreign key.</param>
 		protected void AttachTo(DatabaseModel parent, string foreignKey)
 		{
 			if(!IsDatabaseField(foreignKey))
@@ -65,6 +91,14 @@ namespace AutoTune.Models
 			Commit();
 		}
 
+		/// <summary>
+		/// Creates a new row in the specified join table, joining this
+		/// row to the desired parent.
+		/// </summary>
+		/// <param name="parent">The parent row to be attached to.</param>
+		/// <param name="joinModelConstructor">A constructor for the join model.</param>
+		/// <param name="parentKey">The foreign key in the join table corresponding to the parent row.</param>
+		/// <param name="childKey">The foreign key in the join table corresponding to the child row.</param>
 		protected void AttachTo(DatabaseModel parent, Constructor joinModelConstructor, string parentKey, string childKey)
 		{
 			DatabaseModel joinModel = joinModelConstructor();
@@ -73,6 +107,15 @@ namespace AutoTune.Models
 			joinModel.Commit();
 		}
 
+		/// <summary>
+		/// Creates a new row in the specified join table, joining this
+		/// row to the desired parent.
+		/// </summary>
+		/// <param name="parent">The parent row to be attached to.</param>
+		/// <param name="joinModelConstructor">A constructor for the join model.</param>
+		/// <param name="parentKey">The foreign key in the join table corresponding to the parent row.</param>
+		/// <param name="childKey">The foreign key in the join table corresponding to the child row.</param>
+		/// <param name="payload">Any additional values to be set in the new join table row.</param>
 		protected void AttachTo(DatabaseModel parent, Constructor joinModelConstructor, string parentKey, string childKey, Hashtable payload)
 		{
 			DatabaseModel joinModel = joinModelConstructor();
@@ -85,6 +128,11 @@ namespace AutoTune.Models
 			joinModel.Commit();
 		}
 
+		/// <summary>
+		/// Saves any changes to this object into the database.
+		/// If the instance is new (therefore, does not have a valid
+		/// ID), a new row is created.
+		/// </summary>
 		public void Commit()
 		{
 			if (!AllFieldsAreValid())
@@ -163,6 +211,13 @@ namespace AutoTune.Models
 
 		protected delegate DatabaseModel Constructor();
 
+		/// <summary>
+		/// Get all rows meeting the specified conditions.
+		/// </summary>
+		/// <param name="tableName">The name of the table being fetched from.</param>
+		/// <param name="modelConstructor">A constructor for the result objects.</param>
+		/// <param name="conditions">ColumnName : Value pairs for the conditions in the WHERE clause.</param>
+		/// <returns>A list of matching database models.</returns>
 		protected static DatabaseModel[] Find(string tableName, Constructor modelConstructor, Hashtable conditions)
 		{
 			if (conditions == null || conditions.Count == 0)
@@ -188,6 +243,12 @@ namespace AutoTune.Models
 			return ManualFind(commandString, modelConstructor);
 		}
 
+		/// <summary>
+		/// Gets all rows in a specified table.
+		/// </summary>
+		/// <param name="tableName">The MySQL table name.</param>
+		/// <param name="modelConstructor">A constructor for the result objects.</param>
+		/// <returns>List of all objects in the specified table.</returns>
 		private static DatabaseModel[] FindAll(string tableName, Constructor modelConstructor)
 		{
 			OpenConnection();
@@ -197,6 +258,13 @@ namespace AutoTune.Models
 			return ManualFind(commandString, modelConstructor);
 		}
 
+		/// <summary>
+		/// Gets all the children of this object through the specified foreign key.
+		/// </summary>
+		/// <param name="childTableName">The name of the MySQL child table.</param>
+		/// <param name="childModelConstructor">A constructor for the child models.</param>
+		/// <param name="foreignKey">Column name of the foreign key.</param>
+		/// <returns>List of children.</returns>
 		protected DatabaseModel[] FindChildren(string childTableName, Constructor childModelConstructor, string foreignKey)
 		{
 			string commandString = string.Format(
@@ -205,6 +273,15 @@ namespace AutoTune.Models
 			return ManualFind(commandString, childModelConstructor);
 		}
 
+		/// <summary>
+		/// Gets all the children of this object through the specified join table.
+		/// </summary>
+		/// <param name="childTableName">The name of the MySQL child table.</param>
+		/// <param name="childModelConstructor">A constructor for the child models.</param>
+		/// <param name="joinTableName">The name of the MySQL join table.</param>
+		/// <param name="parentKey">The foreign key of the join table corresponding to the parent.</param>
+		/// <param name="childKey">The foreign key of the join table corresponding to the child.</param>
+		/// <returns>List of children..</returns>
 		protected DatabaseModel[] FindChildren(string childTableName, Constructor childModelConstructor, string joinTableName, string parentKey, string childKey)
 		{
 			string commandString = string.Format(
@@ -213,6 +290,17 @@ namespace AutoTune.Models
 			return ManualFind(commandString, childModelConstructor);
 		}
 
+		/// <summary>
+		/// Gets all the children of this object through the specified join table.
+		/// </summary>
+		/// <param name="childTableName">The name of the MySQL child table.</param>
+		/// <param name="childModelConstructor">A constructor for the child models.</param>
+		/// <param name="joinTableName">The name of the MySQL join table.</param>
+		/// <param name="parentKey">The foreign key of the join table corresponding to the parent.</param>
+		/// <param name="childKey">The foreign key of the join table corresponding to the child.</param>
+		/// <param name="childConditions">Additional conditions for the rows in the child table.</param>
+		/// <param name="joinConditions">Additional conditions for the rows in the join table.</param>
+		/// <returns>List of children..</returns>
 		protected DatabaseModel[] FindChildren(string childTableName, Constructor childModelConstructor, string joinTableName, string parentKey, string childKey, Hashtable joinConditions, Hashtable childConditions)
 		{
 			List<string> conditions = new List<string>();
@@ -233,11 +321,20 @@ namespace AutoTune.Models
 			return ManualFind(commandString, childModelConstructor);
 		}
 
+		/// <summary>
+		/// Creates a randomly-generated salt value for password hashing.
+		/// </summary>
+		/// <returns>The salt as a string</returns>
 		public static string GenerateNewSalt()
 		{
 			return Hash(String.Format("{0}{1}", DateTime.Now, (new Random()).NextDouble()));
 		}
 
+		/// <summary>
+		/// Gets the column names of all fields that should be
+		/// saved to the database (see IsDatabaseField(...)).
+		/// </summary>
+		/// <returns>Column names as a list of strings.</returns>
 		private string[] GetColumnNames()
 		{
 			List<string> columnNames = new List<string>();
@@ -252,6 +349,11 @@ namespace AutoTune.Models
 			return columnNames.ToArray();
 		}
 
+		/// <summary>
+		/// Gets all of the values that should be saved in
+		/// the database (see IsDatabaseField(...)).
+		/// </summary>
+		/// <returns>Hashtable of ColumnName:Value pairs.</returns>
 		private Hashtable GetDatabaseValues()
 		{
 			Hashtable databaseValues = new Hashtable();
@@ -264,6 +366,11 @@ namespace AutoTune.Models
 			return databaseValues;
 		}
 
+		/// <summary>
+		/// Computes a printable hash of the provided value.
+		/// </summary>
+		/// <param name="value">The string to be hashed</param>
+		/// <returns>The hashed string.</returns>
 		public static string Hash(string value)
 		{
 			byte[] input = Encoding.UTF8.GetBytes(value);
@@ -277,6 +384,15 @@ namespace AutoTune.Models
 			return result;
 		}
 
+		/// <summary>
+		/// Runs any validators defined in a subclass. Validators are
+		/// expected to be named 'IsValid{FieldName}', eg 'IsValidUsername',
+		/// take the value as their one parameter, and return a bool.
+		/// </summary>
+		/// <param name="value">The value to be checked.</param>
+		/// <param name="fieldName">Field name of the value.</param>
+		/// <param name="self">The type of the calling object.</param>
+		/// <returns>False if any validator fails.</returns>
 		public static bool IsValid(object value, string fieldName, Type self)
 		{
 			MethodInfo method = self.GetMethod("IsValid" + fieldName);
@@ -291,6 +407,13 @@ namespace AutoTune.Models
 			}
 		}
 
+		/// <summary>
+		/// Gets all values returned by an SQL select command.
+		/// WARNING: DANGEROUS METHOD! USE ONLY WITH GREAT CAUTION!
+		/// </summary>
+		/// <param name="commandString">The SQL SELECT command.</param>
+		/// <param name="modelConstructor">A constructor for the database models.</param>
+		/// <returns>List of database objects.</returns>
 		private static DatabaseModel[] ManualFind(string commandString, Constructor modelConstructor)
 		{
 			OpenConnection();
@@ -312,6 +435,12 @@ namespace AutoTune.Models
 			return models.ToArray();
 		}
 
+		/// <summary>
+		/// Gets the value as a string, escaped as necessary
+		/// based on its type.
+		/// </summary>
+		/// <param name="value">The value to be escaped.</param>
+		/// <returns>The value as an escaped string.</returns>
 		public static string SqlEscaped(object value)
 		{
 			if (value == null)
@@ -324,16 +453,36 @@ namespace AutoTune.Models
 				return value.ToString();
 		}
 
+		/// <summary>
+		/// Escapes newlines and quotation marks, and surrounds with quotation marks.
+		/// </summary>
+		/// <param name="value">The string to be escaped.</param>
+		/// <returns>The escaped string.</returns>
 		public static string SqlEscaped(string value)
 		{
 			return string.Format("\"{0}\"", value.Replace("\n", "\\n").Replace("\"", "\\\""));
 		}
 
+		/// <summary>
+		/// Converts a DateTime object into its
+		/// string representation in a format
+		/// understandable by MySQL. Also surrounds
+		/// with quotation marks.
+		/// </summary>
+		/// <param name="value">The DateTime to be escaped.</param>
+		/// <returns>The DateTime as a MySQL-friendly string.</returns>
 		public static string SqlEscaped(DateTime value)
 		{
 			return string.Format("\"{0}\"", value.ToString("yyyy-MM-dd HH:mm:ss"));
 		}
 
+		/// <summary>
+		/// Restores/resets all database-backed fields of this object
+		/// with values from its row in the database.
+		/// REQUIRES A VALID ID!
+		/// Attempting to Update() a new instance (with no ID)
+		/// will result in an error.
+		/// </summary>
 		public void Update()
 		{
 			if (ID == null)
@@ -349,7 +498,10 @@ namespace AutoTune.Models
 			}
 		}
 
-
+		/// <summary>
+		/// Restores/resets all database-backed fields of this object.
+		/// See Update().
+		/// </summary>
 		private void UpdateDatabaseFieldValues()
 		{
 			OpenConnection();
@@ -381,6 +533,14 @@ namespace AutoTune.Models
 			CloseConnection();
 		}
 
+		/// <summary>
+		/// Restores/resets all database-backed fields of this
+		/// object from the provided IDataRecord. The IDataRecord is
+		/// expected to contain the required data; e.g. when using
+		/// MySqlDataReader, the Read() function must have already
+		/// been called.
+		/// </summary>
+		/// <param name="reader">The values read from the database.</param>
 		private void UpdateDatabaseFieldValues(IDataRecord reader)
 		{
 			for (int i = 0; i < reader.FieldCount; ++i)

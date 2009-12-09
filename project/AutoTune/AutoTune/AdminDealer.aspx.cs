@@ -18,7 +18,7 @@ namespace AutoTune
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Employee user = Session["User"];
+            Employee user = (Employee)Session["User"];
             UserLabel.Text = string.Format("'{0}', '{0}'", user.Username, user.ID);
         }
     }

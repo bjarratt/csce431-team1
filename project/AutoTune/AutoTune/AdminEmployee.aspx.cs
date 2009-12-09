@@ -20,13 +20,13 @@ namespace AutoTune
         {
             Employee user = (Employee)Session["User"];
 
-            if (user != null)
+            if (user != null && user.IsAdmin())
             {
                 Label1.Text = user.Username;
             }
             else
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("AccessDenied.aspx");
             }
         	EmployeesRepeater.DataSource = Employee.FindAllNonAdmin();
         	EmployeesRepeater.DataBind();

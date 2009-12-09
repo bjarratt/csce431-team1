@@ -19,13 +19,13 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
             Employee user = (Employee)Session["User"];
-            if (user != null)
+            if (user != null && user.IsAdmin())
             {
                 Label1.Text = user.Username;
             }
             else
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("AccessDenied.aspx");
             }
 
         	DealershipsRepeater.DataSource = Dealership.FindAll();

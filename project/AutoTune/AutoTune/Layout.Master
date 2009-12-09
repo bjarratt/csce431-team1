@@ -55,7 +55,10 @@
 							    </fieldset>--%>
 					    </li>
 					    <li>
-						    <h2>News</h2>
+						    <h2>&nbsp;</h2>
+					    </li>
+                                        <li>
+						                    <h2>News</h2>
 						    <ul>
 							    <li><a href="#">AutoTune Adds New Location</a></li>
 							    <li><a href="#">AutoTune Featured in Dealerships Monthly</a></li>

@@ -28,7 +28,8 @@ namespace AutoTune
             }
             else
             {
-
+                AuthenticationLabel.ForeColor = System.Drawing.Color.Red;
+                AuthenticationLabel.Text = "Authentication Failed";
             }
 		}
 	}

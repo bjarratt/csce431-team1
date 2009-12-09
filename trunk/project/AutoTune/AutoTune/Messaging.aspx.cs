@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using AutoTune.Models;
+
 namespace AutoTune
 {
     public partial class WebForm2 : System.Web.UI.Page
@@ -26,7 +27,7 @@ namespace AutoTune
             }
             else
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("AccessDenied.aspx");
             }
         }
 

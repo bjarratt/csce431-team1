@@ -85,6 +85,13 @@
     <Compile Include="AdminVehicle.aspx.designer.cs">
       <DependentUpon>AdminVehicle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManagerDealer.aspx.cs">
+      <DependentUpon>ManagerDealer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerDealer.aspx.designer.cs">
+      <DependentUpon>ManagerDealer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerHome.aspx.cs">
       <DependentUpon>ManagerHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,12 +163,19 @@
     <Compile Include="VehiclesTest.aspx.designer.cs">
       <DependentUpon>VehiclesTest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DealerEdit.aspx.cs">
-      <DependentUpon>DealerEdit.aspx</DependentUpon>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DealerEdit.aspx.designer.cs">
-      <DependentUpon>DealerEdit.aspx</DependentUpon>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -172,13 +186,15 @@
     <Content Include="default.css" />
     <Content Include="Layout.Master" />
     <Content Include="Default.aspx" />
+    <Content Include="ManagerDealer.aspx" />
     <Content Include="ManagerHome.aspx" />
     <Content Include="SalespersonEmployee.aspx" />
     <Content Include="SalespersonVehicle.aspx" />
     <Content Include="SalespersonHome.aspx" />
     <Content Include="Messaging.aspx" />
     <Content Include="VehiclesTest.aspx" />
-    <Content Include="DealerEdit.aspx" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="AccessDenied.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

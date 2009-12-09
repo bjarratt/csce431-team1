@@ -15,6 +15,10 @@ Width="70px">Messaging</asp:LinkButton>
     <asp:Button ID="Logout_Button" runat="server" onclick="Logout_Click" 
         Text="Logout" />
 <br />
+<asp:HyperLink ID="HyperLink5" runat="server" 
+            NavigateUrl="ChangePassword.aspx">Change Password</asp:HyperLink>
+<br />
+<br />
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <h2 class="title"><a href="#">Welcome to the AutoTune Admin Home Page</a></h2>

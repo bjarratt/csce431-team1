@@ -209,6 +209,22 @@ namespace AutoTune.Models
 			CloseConnection();
 		}
 
+		public void Destroy()
+		{
+			if(ID == null) return;
+
+			OpenConnection();
+
+			string commandString = string.Format("DELETE FROM {0} WHERE ID = {1}", TableName(), ID);
+
+			MySqlCommand command = new MySqlCommand(commandString, Connection);
+			command.ExecuteNonQuery();
+
+			CloseConnection();
+
+			this["ID"] = null;
+		}
+
 		protected delegate DatabaseModel Constructor();
 
 		/// <summary>

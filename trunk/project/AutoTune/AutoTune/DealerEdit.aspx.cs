@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
+using AutoTune.Models;
 
 namespace AutoTune
 {
@@ -17,7 +18,21 @@ namespace AutoTune
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			Dealership dealership = Dealership.Find(int.Parse(Request["id"]));
+			NameTextBox.Text = dealership.Name;
+			LocationTextBox.Text = dealership.Location;
+			EmailTextBox.Text = dealership.Email;
+			PhoneTextBox.Text = dealership.Phone;
+		}
 
+		protected void SubmitButton_Click(object sender, EventArgs e)
+		{
+			Dealership dealership = Dealership.Find(int.Parse(Request["id"]));
+			dealership.Name = NameTextBox.Text;
+			dealership.Location = LocationTextBox.Text;
+			dealership.Email = EmailTextBox.Text;
+			dealership.Phone = PhoneTextBox.Text;
+			dealership.Commit();
 		}
 	}
 }

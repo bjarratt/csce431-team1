@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="SalespersonEmployee.aspx.cs" Inherits="AutoTune.SalespersonEmployee1" Title="Untitled Page" %>
+<%@ Import Namespace="System.ComponentModel"%>
+<%@ Import Namespace="AutoTune.Models"%>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
-    Salesperson Employee List
+    Manager Employee List
 </asp:Content>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
@@ -29,16 +31,25 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 
-            NavigateUrl="SalespersonHome.aspx">Return to Salesperson Home</asp:HyperLink>
+            NavigateUrl="ManagerHome.aspx">Return to Manager Home</asp:HyperLink>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Add Employee" />
-        <br />
-        Employee Info Goes Here....
-        <br />
+        <asp:Repeater ID="EmployeesRepeater" runat="server">
+        <ItemTemplate>
+        <div style="border: 1px solid #000000; margin: 16px; padding: 8px;">
+					<h2><%# ((Employee)Container.DataItem).FullName %></h2>
+					<b>Username: </b> <em><%# ((Employee)Container.DataItem).Username %></em><br />
+					<b>Location: </b> <em><%# ((Employee)Container.DataItem).Location.Name %></em><br />
+					<b>Email: </b> <em><%# ((Employee)Container.DataItem).Email %></em><br />
+					<b>Phone: </b> <em><%# ((Employee)Container.DataItem).Phone %></em><br />
+					<b>IsManager: </b> <em><%# ((Employee)Container.DataItem).IsManager %></em><br />
+					<b>ImageUri: </b> <em><%# ((Employee)Container.DataItem).ImageUri %></em><br />
+        </div>
+        </ItemTemplate>
+        </asp:Repeater>
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 
-            NavigateUrl="SalespersonHome.aspx">Return to Salesperson Home</asp:HyperLink>
+            NavigateUrl="ManagerHome.aspx">Return to Manager Home</asp:HyperLink>
     </div>
 </asp:Content>
     

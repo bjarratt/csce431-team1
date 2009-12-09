@@ -65,5 +65,10 @@ namespace AutoTune.Models
 		{
 			return Find("Dealerships", () => new Dealership(), null).Cast<Dealership>();
 		}
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

@@ -85,6 +85,13 @@
     <Compile Include="AdminVehicle.aspx.designer.cs">
       <DependentUpon>AdminVehicle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SellVehicle.aspx.cs">
+      <DependentUpon>SellVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SellVehicle.aspx.designer.cs">
+      <DependentUpon>SellVehicle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SetTempPass.aspx.cs">
       <DependentUpon>SetTempPass.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +234,7 @@
     <Content Include="AdminEmployee.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminVehicle.aspx" />
+    <Content Include="SellVehicle.aspx" />
     <Content Include="SetTempPass.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="DealerEdit.aspx" />

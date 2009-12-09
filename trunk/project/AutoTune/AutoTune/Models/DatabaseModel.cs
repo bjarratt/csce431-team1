@@ -449,6 +449,8 @@ namespace AutoTune.Models
 				return SqlEscaped((string)value);
 			else if (value is DateTime)
 				return SqlEscaped((DateTime) value);
+			else if (value.GetType() == typeof(DBNull))
+				return "NULL";
 			else
 				return value.ToString();
 		}

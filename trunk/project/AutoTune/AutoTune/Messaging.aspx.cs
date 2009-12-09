@@ -85,6 +85,7 @@ namespace AutoTune
             newMessage.SendTo(recipients);
             update_messages();
             NewMessageBox.Text = String.Empty;
+            RecipientsBox.Text = String.Empty;
         }
 
         protected void MessageClick(object sender, EventArgs e)
@@ -105,6 +106,14 @@ namespace AutoTune
         protected void MarkAsRead_Click(object sender, EventArgs e)
         {
             //delete messages here
+            Employee user = (Employee)Session["User"];
+            IEnumerable messages = user.GetMessages();
+
+            foreach (Message message in messages)
+            {
+                message.Delete();
+            }
+            update_messages();
         }
     }
 }

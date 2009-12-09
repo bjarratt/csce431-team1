@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -147,7 +148,7 @@ namespace AutoTune.Models
 
 		public bool IsAdmin()
 		{
-			return this["DealershipID"] == null;
+			return this["DealershipID"].GetType() == typeof(DBNull);
 		}
 
 		public IEnumerable<VehicleSale> GetVehicleSales()

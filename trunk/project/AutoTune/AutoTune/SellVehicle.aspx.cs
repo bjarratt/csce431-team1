@@ -62,8 +62,9 @@ namespace AutoTune
 					Employee user = (Employee) Session["User"];
 					Employee salesperson = Employee.Find(int.Parse(SalespersonList.SelectedItem.Value));
 					double price = double.Parse(PriceTextBox.Text);
+					string info = CustomerTextBox.Text;
 
-					user.SellVehicle(vehicle, salesperson, "", price);
+					user.SellVehicle(vehicle, salesperson, info, price);
 
 					Response.Redirect("ManagerVehicle.aspx");
 				}

@@ -25,6 +25,12 @@ namespace AutoTune.Models
 			set { this["IsManager"] = value; }
 		}
 
+		public string FullName
+		{
+			get { return (string) this["FullName"]; }
+			set { this["FullName"] = value; }
+		}
+
 		public string Username
 		{
 			get { return (string) this["Username"]; }
@@ -169,6 +175,11 @@ namespace AutoTune.Models
 		public IEnumerable<Dealership> GetLocations()
 		{
 			return FindChildren("Dealerships", () => new Dealership(), "Roles", "EmployeeID", "DealershipID").Cast<Dealership>();
+		}
+
+		public IEnumerable<Vehicle> GetVehicles()
+		{
+			return Location.GetVehicles();
 		}
 	}
 }

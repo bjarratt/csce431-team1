@@ -19,11 +19,12 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
             Employee user = (Employee)Session["User"];
-            if (user != null)
-            {
-                Label1.Text = user.Username;
-            }
-
+						if (user != null)
+						{
+							Label1.Text = user.Username;
+						}
+        	EmployeesRepeater.DataSource = Employee.FindAll();
+        	EmployeesRepeater.DataBind();
         }
         private void Logout()
         {

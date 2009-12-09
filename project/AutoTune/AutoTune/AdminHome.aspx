@@ -18,4 +18,5 @@ Width="70px">Messaging</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <h2 class="title"><a href="#">Welcome to the AutoTune Admin Home Page</a></h2>
+	<a href="AdminEmployee.aspx" >Manage Employees</a>
 </asp:Content>

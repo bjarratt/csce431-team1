@@ -85,6 +85,13 @@
     <Compile Include="AdminVehicle.aspx.designer.cs">
       <DependentUpon>AdminVehicle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DealerEdit.aspx.cs">
+      <DependentUpon>DealerEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DealerEdit.aspx.designer.cs">
+      <DependentUpon>DealerEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerDealer.aspx.cs">
       <DependentUpon>ManagerDealer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,6 +190,7 @@
     <Content Include="AdminEmployee.aspx" />
     <Content Include="AdminHome.aspx" />
     <Content Include="AdminVehicle.aspx" />
+    <Content Include="DealerEdit.aspx" />
     <Content Include="default.css" />
     <Content Include="Layout.Master" />
     <Content Include="Default.aspx" />

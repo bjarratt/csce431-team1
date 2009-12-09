@@ -95,6 +95,15 @@ namespace AutoTune {
         protected global::System.Web.UI.WebControls.Button Logout_Button;
         
         /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
+        
+        /// <summary>
         /// HyperLink4 control.
         /// </summary>
         /// <remarks>

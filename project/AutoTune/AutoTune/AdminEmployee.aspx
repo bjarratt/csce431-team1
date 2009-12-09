@@ -17,7 +17,9 @@ Width="70px">Messaging</asp:LinkButton>
     <asp:Button ID="Logout_Button" runat="server" onclick="Logout_Click" 
         Text="Logout" />
 <br />
-<asp:HyperLink ID="HyperLink4" runat="server" 
+    <asp:Panel ID="Panel2" runat="server" Height="29px">
+    </asp:Panel>
+<asp:HyperLink ID="changepassword" runat="server" 
             NavigateUrl="ChangePassword.aspx">Change Password</asp:HyperLink>
 <br />
 <br />

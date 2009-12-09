@@ -32,6 +32,9 @@ Width="70px">Messaging</asp:LinkButton>
             <br /><br /><br />
             Salesperson: <asp:DropDownList ID="SalespersonList" runat="server"></asp:DropDownList><br />
             Price: <asp:TextBox ID="PriceTextBox" runat="server"></asp:TextBox><br />
+            Customer Info:<br />
+            <asp:TextBox ID="CustomerTextBox" runat="server" Height="150px" 
+			TextMode="MultiLine" Width="500px"></asp:TextBox><br />
             <asp:Button ID="SellButton" Text="Sell" runat="server" 
 			onclick="SellButton_Click" />
     </div>

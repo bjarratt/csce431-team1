@@ -21,7 +21,7 @@ namespace AutoTune
                 Session["User"] = user;
                 if (user.IsAdmin())
                     Response.Redirect("AdminHome.aspx");
-                if (user.IsManager())
+                if (user.IsManager)
                     Response.Redirect("ManagerHome.aspx");
                 else //if (user.IsSalesperson())
                     Response.Redirect("SalespersonHome.aspx");

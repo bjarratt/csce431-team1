@@ -26,7 +26,7 @@ Width="70px">Messaging</asp:LinkButton>
 <h2 class="title"><a href="#">Welcome to the AutoTune Admin Home Page</a></h2>
 <div>
     	<asp:HyperLink ID="HyperLink1" runat="server" 
-            NavigateUrl="AdminVehicle.aspx">View Vehicle Inventory</asp:HyperLink>
+            NavigateUrl="AdminVehicle.aspx">View/Edit Vehicle Inventory</asp:HyperLink>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink2" runat="server" 
@@ -34,7 +34,7 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink3" runat="server" 
-            NavigateUrl="AdminDealer.aspx">View Dealerships</asp:HyperLink>
+            NavigateUrl="AdminDealer.aspx">View/Edit Dealerships</asp:HyperLink>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink4" runat="server"

@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
 	
-	<%--<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>--%>
+    <%--<asp:Label ID="UserLabel" runat="server" Text=""></asp:Label>--%>
 	Username:
 	<br />
 	<asp:TextBox ID="Username" runat="server"></asp:TextBox><br /><br />

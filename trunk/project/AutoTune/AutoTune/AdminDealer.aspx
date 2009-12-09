@@ -6,7 +6,7 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="MessageButton" ContentPlaceHolderID="MessageContentPlaceholder" runat="server">
-<asp:LinkButton ID="LinkButton2" runat="server" OnClick="MessageClick" Height="16px"
+    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="MessageClick" Height="16px"
 Width="70px">Messaging</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
@@ -24,7 +24,7 @@ Width="70px">Messaging</asp:LinkButton>
 <br />
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-	<div>
+    <div>
     	<h2 class="title"><a href="#">Welcome to the AutoTune Dealership Listing</a></h2>
         <h2 class="title"><a href="#">Page</a></h2>
         <br />
@@ -33,7 +33,8 @@ Width="70px">Messaging</asp:LinkButton>
             NavigateUrl="AdminHome.aspx">Return to Admin Home</asp:HyperLink>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Add Dealership" />
+        <asp:Button ID="AddDealership" runat="server" Text="Add Dealership" 
+            onclick="Button1_Click" />
         <br />
         <asp:Repeater ID="DealershipsRepeater" runat="server">
 					<ItemTemplate>

@@ -111,7 +111,13 @@ namespace AutoTune.Models
 
 		public IEnumerable<Message> GetMessages()
 		{
-			return FindChildren("Messages", () => new Message(), "MessageRecipients", "EmployeeID", "MessageID").Cast<Message>();
+			IEnumerable<Message> allMessages =  FindChildren("Messages", () => new Message(), "MessageRecipients", "EmployeeID", "MessageID").Cast<Message>();
+			List<Message> messages = new List<Message>();
+			foreach(Message message in allMessages)
+				if(!message.Deleted)
+					messages.Add(message);
+
+			return messages;
 		}
 
 		public IEnumerable<Message> GetSentMessages()

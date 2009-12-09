@@ -6,12 +6,17 @@ namespace AutoTune.Models
 {
 	public class Message : DatabaseModel
 	{
-		private static readonly string[] DatabaseFields = {"Sender", "Body", "Added"};
+		private static readonly string[] DatabaseFields = {"Sender", "Body", "Deleted"};
 		public override bool IsDatabaseField(string fieldName)
 		{ return DatabaseFields.Contains(fieldName); }
 
 		public override string TableName()
 		{ return "Messages"; }
+
+		public Message() : base()
+		{
+			this["Deleted"] = false;
+		}
 
 		public Employee Sender
 		{
@@ -29,6 +34,15 @@ namespace AutoTune.Models
 		{
 			get { return (string)this["Body"]; }
 			set { this["Body"] = value; }
+		}
+
+		public bool Deleted
+		{ get { return (bool)this["Deleted"]; } }
+
+		public void Delete()
+		{
+			this["Deleted"] = true;
+			Commit();
 		}
 
 		public Employee[] GetRecipients()

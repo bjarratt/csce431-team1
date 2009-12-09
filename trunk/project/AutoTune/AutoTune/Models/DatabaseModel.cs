@@ -594,8 +594,8 @@ namespace AutoTune.Models
 			string conditions = string.Join(" AND ", columnSetters.ToArray());
 
 			string commandString = string.Format(
-				"SELECT ID FROM {0} WHERE {1} ORDER BY Added DESC",
-				TableName(), conditions);
+				"SELECT ID FROM {0} WHERE Added = {1}",
+				TableName(), SqlEscaped(Added));
 
 			MySqlCommand command = new MySqlCommand(commandString, Connection);
 			MySqlDataReader reader = command.ExecuteReader();

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="AdminEmployee.aspx.cs" Inherits="AutoTune.AdminEmployee" Title="Untitled Page" %>
+<%@ Import Namespace="System.ComponentModel"%>
 <%@ Import Namespace="AutoTune.Models"%>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
     Administrator Employee List

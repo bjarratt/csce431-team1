@@ -24,7 +24,7 @@ namespace AutoTune
                 UpdateDataBindings();
             }
             if (user == null)
-                Logout();
+                Response.Redirect("Default.aspx");
             else
                 Label1.Text = user.Username;
         }

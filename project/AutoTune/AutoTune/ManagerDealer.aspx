@@ -25,6 +25,9 @@ Width="70px">Messaging</asp:LinkButton>
         </asp:Repeater>
         <br />
         <br />
+Dealership: 
+    <asp:DropDownList ID="DealershipBox" runat="server">
+    </asp:DropDownList><br />
 Year:<asp:TextBox ID="Year" runat="server"></asp:TextBox><br />
 Make:<asp:TextBox ID="Make" runat="server"></asp:TextBox><br />
 Model:<asp:TextBox ID="Model" runat="server"></asp:TextBox><br />

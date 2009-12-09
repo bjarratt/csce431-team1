@@ -19,16 +19,30 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
             Employee user = (Employee)Session["User"];
-            if (user != null)
+            if (!IsPostBack)
             {
-                Label1.Text = user.Username;
+                UpdateDataBindings();
             }
+            if (user == null)
+                Logout();
+            else
+                Label1.Text = user.Username;
+        }
+
+        private void UpdateDataBindings()
+        {
             DealershipsRepeater.DataSource = Dealership.FindAll();
             DealershipsRepeater.DataBind();
+            DealershipBox.DataSource = Dealership.FindAll();
+            DealershipBox.DataTextField = "Name";
+            DealershipBox.DataValueField = "ID";
+            DealershipBox.DataBind();
         }
+
         protected void AddVehicle(object sender, EventArgs e)
         {
             Vehicle v = new Vehicle();
+            v["DealershipID"] = DealershipBox.SelectedItem.Value;
             v.Year = int.Parse(Year.Text);
             v.Make = Make.Text;
             v.Model = Model.Text;
@@ -37,6 +51,7 @@ namespace AutoTune
             v.BaseValue = int.Parse(BaseVal.Text);
             v.DiscountValue = int.Parse(DisVal.Text);
             v.Commit();
+            UpdateDataBindings();
         }
         private void Logout()
         {

@@ -27,6 +27,9 @@ namespace AutoTune
             {
                 Response.Redirect("Default.aspx");
             }
+
+        	DealershipsRepeater.DataSource = Dealership.FindAll();
+        	DealershipsRepeater.DataBind();
         }
 
         private void Logout()

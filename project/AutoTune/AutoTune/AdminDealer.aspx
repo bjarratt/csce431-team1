@@ -32,11 +32,8 @@ Width="70px">Messaging</asp:LinkButton>
         <asp:Repeater ID="DealershipsRepeater" runat="server">
 					<ItemTemplate>
 					<div style="border: 1px solid #000000; margin: 16px; padding: 8px;">
-						<h2><%# ((Dealership)Container.DataItem).Name) %></h2>
-						<b>Location: </b><em><%# ((Dealership)Container.DataItem).Location) %></em><br />
-						<b>Location: </b><em><%# ((Dealership)Container.DataItem).Email) %></em><br />
-						<b>Location: </b><em><%# ((Dealership)Container.DataItem).Phone) %></em><br />
-						<a href="DealerEdit.aspx?id=<%# ((Dealership)Container.DataItem).ID) %>">Edit</a>
+						<h2><%# ((Dealership)Container.DataItem).Name %></h2>
+						<a href="DealerEdit.aspx?id=<%# ((Dealership)Container.DataItem).ID %>">Edit</a>
 					</div>
 					</ItemTemplate>
         </asp:Repeater>

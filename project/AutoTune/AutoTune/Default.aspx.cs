@@ -4,7 +4,7 @@ using AutoTune.Models;
 
 namespace AutoTune
 {
-	public partial class WebForm1 : Page
+	public partial class Default : Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

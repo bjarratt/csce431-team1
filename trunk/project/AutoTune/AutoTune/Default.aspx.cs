@@ -16,8 +16,16 @@ namespace AutoTune
 			string password = Password.Text;
 
 			Employee user = Employee.Authenticate(username, password);
-			if(user != null)
-				Session["User"] = user;
+            if (user != null)
+            {
+                Session["User"] = user;
+                if (user.IsAdmin)
+                    Response.Redirect("AdminHome.aspx");
+                if (user.IsManager)
+                    Response.Redirect("ManagerHome.aspx");
+                if (user.IsSalesperson)
+                    Response.Redirect("SalespersonHome.aspx");
+            }
 		}
 	}
 }

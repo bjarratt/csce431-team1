@@ -18,48 +18,60 @@ namespace AutoTune
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*Employee user = (Employee)Session["User"];
+            Employee user = (Employee)Session["User"];
             if (user != null)
             {
                 Label1.Text = user.Username;
             }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
             
-            foreach (Vehicle v in Vehicle.FindAll()){
+            /*foreach (Vehicle v in Vehicle.FindAll()){
                 //Table table1 = new Table();
-                table1.RowGroups.Add(new TableRowGroup());
+                table1.Rows.Add(new TableRow());
                 TableRow currentRow;
-                currentRow = table1.RowGroups[0].Rows[0];
-                table1.RowGroups.Rows.Add(currentRow);
+                currentRow = table1.Rows[0];
                 
                 // Add the header row with content, 
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.TableName()))));
+                currentRow.Cells.Add(new TableCell());
+                currentRow.Cells[0].Text = v.TableName();
                 
-                currentRow = table1.RowGroups(0).Rows(1);
-                table1.RowGroups(0).Rows.Add(currentRow);
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Year"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Make"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Model"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("VIN"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("TRIM"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("SR VALUE"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("BASE VALUE"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("DISC VALUE"))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run("LOCATION"))));
+                table1.Rows.Add(new TableRow());
+                currentRow = table1.Rows[1];
+                for (int i = 0; i < 9; i++)
+                {
+                    currentRow.Cells.Add(new TableCell());
+                }
+                currentRow.Cells[0].Text = "Year";
+                currentRow.Cells[1].Text ="Make";
+                currentRow.Cells[2].Text ="Model";
+                currentRow.Cells[3].Text ="VIN";
+                currentRow.Cells[4].Text ="TRIM";
+                currentRow.Cells[5].Text ="SR VALUE";
+                currentRow.Cells[6].Text ="BASE VALUE";
+                currentRow.Cells[7].Text ="DISC VALUE";
+                currentRow.Cells[8].Text ="LOCATION";
                 //currentRow.Cells.Add(new TableCell(new Paragraph(new Run("STATUS"))));
                 //currentRow.Cells.Add(new TableCell(new Paragraph(new Run("TRADE STAT"))));
-                currentRow = table1.RowGroups(0).Rows(2);
-                table1.RowGroups(0).Rows.Add(currentRow);
                 
-
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.Year))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.Make))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.Model))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.Identifier))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.Trim))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.BookValue))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.BaseValue))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.DiscountValue))));
-                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.GetLocation()))));
+                table1.Rows.Add(new TableRow());
+                currentRow = table1.Rows[2];
+                for (int i = 0; i < 9; i++)
+                {
+                    currentRow.Cells.Add(new TableCell());
+                }
+                currentRow.Cells[0].Text = v.Year.ToString();
+                currentRow.Cells[1].Text = v.Make;
+                currentRow.Cells[2].Text = v.Model;
+                currentRow.Cells[3].Text = v.Identifier;
+                currentRow.Cells[4].Text = v.Trim;
+                //currentRow.Cells[5].Text = v.BookValue +"";
+                //currentRow.Cells[6].Text = v.BaseValue +"";
+                //currentRow.Cells[7].Text = v.DiscountValue +"";
+                currentRow.Cells[8].Text = v.GetLocation().ToString();
+               
                 //currentRow.Cells.Add(new TableCell(new Paragraph(new Run(v.))));
                 //currentRow.Cells.Add(new TableCell(new Paragraph(new Run("TRADE STAT"))));
 

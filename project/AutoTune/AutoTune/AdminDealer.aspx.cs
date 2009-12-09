@@ -23,6 +23,21 @@ namespace AutoTune
             {
                 Label1.Text = user.Username;
             }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
+        }
+
+        private void Logout()
+        {
+            Session["User"] = null;
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Logout();
         }
         protected void MessageClick(object sender, EventArgs e)
         {

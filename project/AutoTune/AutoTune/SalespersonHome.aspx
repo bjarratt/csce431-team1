@@ -29,7 +29,8 @@ Width="70px">Messaging</asp:LinkButton>
             NavigateUrl="SalespersonEmployee.aspx">View Employee Roster</asp:HyperLink>
         <br />
         <br />
-        <asp:LinkButton ID="LinkButton1" runat="server">Messaging</asp:LinkButton>
+        <asp:HyperLink ID="HyperLink3" runat="server"
+            NavigateUrl= "Messaging.aspx" >Messaging</asp:HyperLink>
     </div>
 </asp:Content>
   

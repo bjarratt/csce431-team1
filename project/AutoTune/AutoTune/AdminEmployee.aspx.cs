@@ -19,10 +19,15 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
             Employee user = (Employee)Session["User"];
-						if (user != null)
-						{
-							Label1.Text = user.Username;
-						}
+
+            if (user != null)
+            {
+                Label1.Text = user.Username;
+            }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
         	EmployeesRepeater.DataSource = Employee.FindAllNonAdmin();
         	EmployeesRepeater.DataBind();
         }

@@ -20,7 +20,14 @@ namespace AutoTune
         {
             update_messages();
             Employee user = (Employee)Session["User"];
-            Label1.Text = user.Username;
+            if (user != null)
+            {
+                Label1.Text = user.Username;
+            }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
 
         protected void update_messages()

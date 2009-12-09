@@ -104,5 +104,23 @@ namespace AutoTune.Models
 		{
 			return string.Format("{0} {1} {2}", Year, Make, Model);
 		}
+
+		public static bool IsValidYear(int? year)
+		{ return year != null && year > 1900 && year < 2100; }
+
+		public static bool IsValidMake(string make)
+		{ return make != null; }
+
+		public static bool IsValidModel(string model)
+		{ return model != null; }
+
+		public static bool IsValidBookValue(double bookValue)
+		{ return bookValue > 0.0; }
+
+		public static bool IsValidBaseValue(double baseValue)
+		{ return baseValue > 0.0; }
+
+		public static bool IsValidDiscountValue(double discountValue)
+		{ return discountValue > 0.0; }
 	}
 }

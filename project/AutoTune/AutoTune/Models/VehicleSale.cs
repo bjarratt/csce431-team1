@@ -47,5 +47,8 @@ namespace AutoTune.Models
 			get { return (System.Single) this["Price"]; }
 			set { this["Price"] = value; }
 		}
+
+		public static bool IsValidPrice(double? price)
+		{ return price != null && price > 0.0; }
 	}
 }

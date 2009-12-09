@@ -37,6 +37,15 @@ namespace AutoTune.Models
 			set { this["Phone"] = value; }
 		}
 
+		public static bool IsValidPhone(string phone)
+		{ return phone != null; }
+
+		public static bool IsValidEmail(string email)
+		{ return email != null; }
+
+		public static bool IsValidLocation(string location)
+		{ return location != null; }
+
 		public static IEnumerable<Dealership> Find(Hashtable conditions)
 		{
 			return Find("Dealerships", () => new Dealership(), conditions).Cast<Dealership>();

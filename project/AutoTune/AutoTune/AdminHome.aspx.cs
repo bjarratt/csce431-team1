@@ -22,6 +22,7 @@ namespace AutoTune
             if (user != null)
             {
                 Label1.Text = user.Username;
+                Label1.Font.Bold = true;
             }
 
         }

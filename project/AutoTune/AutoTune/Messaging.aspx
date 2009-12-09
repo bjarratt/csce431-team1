@@ -4,6 +4,7 @@ Messaging
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
+
 <asp:Content ID="MessageButton" ContentPlaceHolderID="MessageContentPlaceholder" runat="server">
 <asp:LinkButton ID="LinkButton2" runat="server" OnClick="MessageClick" Height="16px"
 Width="70px">Messaging</asp:LinkButton>
@@ -16,7 +17,8 @@ Width="70px">Messaging</asp:LinkButton>
             Width="574px"></asp:Label>
         <br />
         <br />
-        <br />
+        <asp:Button ID="MarkAsRead" runat="server" onclick="MarkAsRead_Click" 
+            Text="Mark Messages As Read" />
         <br />
         <br />
         Message Recipients(separated by commas)<br />
@@ -32,7 +34,7 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
         &nbsp;&nbsp;
         <asp:Button ID="SendButton" runat="server" Height="23px" 
-            onclick="SendButton_Click" Text="Send Message" Width="91px" />
+            onclick="SendButton_Click" Text="Send" Width="91px" />
         <br />
         <br />
         <br />
@@ -42,5 +44,11 @@ Width="70px">Messaging</asp:LinkButton>
         <br />
     </asp:Panel>
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
+<asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
+    You are logged in as: <br /><asp:Label ID="Label1" runat="server" Font-Bold="true" ></asp:Label>
+<br />
+<br />
+    <asp:Button ID="Logout_Button" runat="server" onclick="Logout_Click" 
+        Text="Logout" />
+<br />
 </asp:Content>

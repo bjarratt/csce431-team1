@@ -19,6 +19,8 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
             update_messages();
+            Employee user = (Employee)Session["User"];
+            Label1.Text = user.Username;
         }
 
         protected void update_messages()
@@ -41,7 +43,7 @@ namespace AutoTune
                             string messageBody = message.Body;
 
                             m = m + string.Format(
-                                "<b>From: {0}</b><br />Message: {1}<br /><br />",
+                                "<b>From: {0}</b><br />{1}<br /><br />",
                                 messageSender, messageBody);
                         }
                     else
@@ -60,7 +62,6 @@ namespace AutoTune
 
                 MessagesBox.Text = m;
             }
-
         }
 
         protected void SendButton_Click(object sender, EventArgs e)
@@ -86,14 +87,24 @@ namespace AutoTune
             NewMessageBox.Text = String.Empty;
         }
 
-        protected void MessagesBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void MessageClick(object sender, EventArgs e)
         {
             Response.Redirect("Messaging.aspx");
+        }
+        private void Logout()
+        {
+            Session["User"] = null;
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
+
+        protected void MarkAsRead_Click(object sender, EventArgs e)
+        {
+            //delete messages here
         }
     }
 }

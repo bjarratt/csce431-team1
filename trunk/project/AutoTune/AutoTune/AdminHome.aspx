@@ -9,11 +9,12 @@
 Width="70px">Messaging</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
-    You are logged in as: <br /><asp:Label ID="Label1" runat="server"></asp:Label>
+    You are logged in as: <br /><asp:Label ID="Label1" runat="server" Font-Bold="true" ></asp:Label>
 <br />
 <br />
+    <asp:Button ID="Logout_Button" runat="server" onclick="Logout_Click" 
+        Text="Logout" />
 <br />
-<asp:LinkButton ID="LinkButton1" runat="server" onclick="Logout_Click" PostBackUrl="Default.aspx">Logout</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <h2 class="title"><a href="#">Welcome to the AutoTune Admin Home Page</a></h2>

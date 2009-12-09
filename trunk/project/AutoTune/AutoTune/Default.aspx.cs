@@ -19,11 +19,11 @@ namespace AutoTune
             if (user != null)
             {
                 Session["User"] = user;
-                if (user.IsAdmin)
+                if (user.IsAdmin())
                     Response.Redirect("AdminHome.aspx");
-                if (user.IsManager)
+                if (user.IsManager())
                     Response.Redirect("ManagerHome.aspx");
-                if (user.IsSalesperson)
+                if (user.IsSalesperson())
                     Response.Redirect("SalespersonHome.aspx");
             }
 		}

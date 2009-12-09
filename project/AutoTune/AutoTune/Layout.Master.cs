@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using AutoTune.Models;
 
 namespace AutoTune
 {
@@ -18,6 +19,26 @@ namespace AutoTune
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        protected void HomeClick(object sender, EventArgs e)
+        {
+            Employee user = (Employee)Session["User"];
+            if (user == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+            if(user.IsAdmin() )
+            {
+                Response.Redirect("AdminHome.aspx");
+            }
+            //if(user == )
+            //{
+            //    Response.Redirect("ManagerHome.aspx");
+            //}
+            //if(user == )
+            //{
+            //    Response.Redirect("AdminHome.aspx");
+            //}
         }
     }
 }

@@ -5,7 +5,7 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">
-    You are logged in as: <br />(employee name, number)
+    You are logged in as: <br /><asp:Label ID="Label1" runat="server"></asp:Label>
 <br />
 <br />
 <br />

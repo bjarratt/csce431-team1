@@ -9,6 +9,11 @@ namespace AutoTune.Models
 		public override bool IsDatabaseField(string fieldName)
 		{ return DatabaseFields.Contains(fieldName); }
 
+        public Dealership GetLocation()
+        {
+            return (Dealership)FindChildren("Dealerships", () => new Dealership(), "DealershipID").First();
+        }
+
 		public string Identifier
 		{
 			get { return (string)this["Identifier"]; }

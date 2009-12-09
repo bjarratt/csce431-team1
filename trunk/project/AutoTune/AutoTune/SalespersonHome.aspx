@@ -5,7 +5,7 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="MessageButton" ContentPlaceHolderID="MessageContentPlaceholder" runat="server">
-<asp:LinkButton ID="LinkButton2" runat="server" OnClick="HomeClick" Height="16px"
+<asp:LinkButton ID="LinkButton2" runat="server" OnClick="MessageClick" Height="16px"
 Width="70px">Messaging</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="LoginContent" ContentPlaceHolderID="LoginPlaceHolder1" runat="server">

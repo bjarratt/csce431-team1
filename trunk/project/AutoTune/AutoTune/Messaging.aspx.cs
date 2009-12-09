@@ -18,6 +18,11 @@ namespace AutoTune
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            update_messages();
+        }
+
+        protected void update_messages()
+        {
             Employee user = (Employee)Session["User"];
             if (user == null)
                 Response.Redirect("default.aspx");
@@ -29,25 +34,33 @@ namespace AutoTune
 
                 if (messages != null)
                 {
-                    if (messages.Count() <= 10)
+                    if (messages.Count() <= 3)
                         foreach (Message message in messages)
-                            m = m + message.Body + "\n";
+                        {
+                            string messageSender = message.Sender.Username;
+                            string messageBody = message.Body;
+
+                            m = m + string.Format(
+                                "<b>From: {0}</b><br />Message: {1}<br /><br />",
+                                messageSender, messageBody);
+                        }
                     else
                     {
-                        for (int i = messages.Count() - 11; i < messages.Count(); i++)
+                        for (int i = messages.Count() - 3; i < messages.Count(); i++)
                         {
                             Message message = messages.ElementAt(i);
                             string messageSender = message.Sender.Username;
                             string messageBody = message.Body;
                             m = m + string.Format(
-                                "<b>From: {0}</b>:<br />Message:<br />{1}<br />",
-                                messageSender, messageBody) + "\n";
+                                "<b>From: {0}</b><br />Message: {1}<br /><br />",
+                                messageSender, messageBody);
                         }
                     }
                 }
 
                 MessagesBox.Text = m;
             }
+
         }
 
         protected void SendButton_Click(object sender, EventArgs e)
@@ -69,11 +82,18 @@ namespace AutoTune
             newMessage.Sender = (Employee)Session["User"];
             newMessage.Commit();
             newMessage.SendTo(recipients);
+            update_messages();
+            NewMessageBox.Text = String.Empty;
         }
 
         protected void MessagesBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void MessageClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Messaging.aspx");
         }
     }
 }

@@ -14,6 +14,22 @@ namespace AutoTune.Models
 			return DatabaseFields.Contains(fieldName);
 		}
 
+		public void SellVehicle(Vehicle vehicle, Employee salesperson, string customerInfo, double price)
+		{
+			if(!IsManager)
+				throw new DatabaseException("Only managers can mark vehicles as sold.");
+
+			VehicleSale sale = new VehicleSale();
+			sale.CustomerInfo = customerInfo;
+			sale.Price = price;
+			sale.Manager = this;
+			sale.Salesperson = salesperson;
+			sale.Commit();
+
+			vehicle.Sale = sale;
+			vehicle.Commit();
+		}
+
 		public override string TableName()
 		{
 			return "Employees";

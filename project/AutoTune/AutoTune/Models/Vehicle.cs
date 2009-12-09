@@ -16,6 +16,21 @@ namespace AutoTune.Models
 			set { this["DealershipID"] = value.ID; }
 		}
 
+		public VehicleSale Sale
+		{
+			get
+			{
+				if(this["VehicleSaleID"].GetType() == typeof(DBNull))
+					return null;
+				else
+					return VehicleSale.Find((int) this["VehicleSaleID"]);
+			}
+			set
+			{
+				this["VehicleSaleID"] = value.ID;
+			}
+		}
+
 		public string Identifier
 		{
 			get { return (string)this["Identifier"]; }

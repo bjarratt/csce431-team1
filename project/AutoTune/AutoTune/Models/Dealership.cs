@@ -57,6 +57,17 @@ namespace AutoTune.Models
 				FindChildren("Employees", () => new Employee(), "Roles", "DealershipID", "EmployeeID").Cast<Employee>();
 		}
 
+		public IEnumerable<Vehicle> GetSoldVehicles()
+		{
+			IEnumerable<Vehicle> allVehicles = FindChildren("Vehicles", () => new Vehicle(), "DealershipID").Cast<Vehicle>();
+			List<Vehicle> soldVehicles = new List<Vehicle>();
+			foreach (Vehicle vehicle in allVehicles)
+				if (vehicle.Sale != null)
+					soldVehicles.Add(vehicle);
+
+			return soldVehicles;
+		}
+
 		public IEnumerable<Vehicle> GetVehicles()
 		{
 			IEnumerable<Vehicle> allVehicles = FindChildren("Vehicles", () => new Vehicle(), "DealershipID").Cast<Vehicle>();

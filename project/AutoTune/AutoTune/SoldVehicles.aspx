@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="ManagerVehicle.aspx.cs" Inherits="AutoTune.WebForm6" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="SoldVehicles.aspx.cs" Inherits="AutoTune.SoldVehicles" Title="Untitled Page" %>
 <%@ Import Namespace="System.ComponentModel"%>
 <%@ Import Namespace="AutoTune.Models"%>
 <asp:Content ID="TitleContent" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
@@ -26,8 +26,7 @@ Width="70px">Messaging</asp:LinkButton>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div>
-    	<h2 class="title"><a href="#">Welcome to the AutoTune Vehicle Listing</a></h2>
-    	<a href="SoldVehicles.aspx">View Sold Vehicles</a>
+	<h2>Sold Vehicles</h2>
         <br />
         <br />
         <asp:HyperLink ID="HyperLink1" runat="server" 
@@ -40,17 +39,15 @@ Width="70px">Messaging</asp:LinkButton>
 			</HeaderTemplate>
 			<ItemTemplate>
 				<tr>
-					<td colspan="2"><h2><%# ((Vehicle)Container.DataItem).ToString() %></h2> <a href="SellVehicle.aspx?id=<%# ((Vehicle)Container.DataItem).ID %>">Sell</a></td>
+					<td colspan="2"><h2><%# ((Vehicle)Container.DataItem).ToString() %></h2></td>
 				</tr>
 				<tr>
 					<td><img alt="<%# ((Vehicle)Container.DataItem).ToString() %>" src="images/Vehicles/<%# ((Vehicle)Container.DataItem).ImageUri %>" width="256" /></td>
 					<td align="left">
 					    <b>VIN: </b> <em><%# ((Vehicle)Container.DataItem).Identifier %></em><br />
 						<b>Trim: </b> <em><%# ((Vehicle)Container.DataItem).Trim %></em><br />
-						<b>Book Value: </b> <em><%# ((Vehicle)Container.DataItem).BookValue %></em><br />
-						<b>Base Value: </b> <em><%# ((Vehicle)Container.DataItem).BaseValue %></em><br />
-						<b>Discount Value: </b> <em><%# ((Vehicle)Container.DataItem).DiscountValue %></em><br />
-						<a href="VehicleEdit.aspx?id=<%# ((Vehicle)Container.DataItem).ID %>">Edit</a>
+						<b>Sold for: </b> <em>$<%# ((Vehicle)Container.DataItem).Sale.Price %></em><br />
+						<b>Sold by: </b> <em><%# ((Vehicle)Container.DataItem).Sale.Salesperson.Username %></em><br />
 					</td>
 				</tr>
 			</ItemTemplate>

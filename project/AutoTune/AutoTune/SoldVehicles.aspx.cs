@@ -14,34 +14,23 @@ using AutoTune.Models;
 
 namespace AutoTune
 {
-    public partial class SellVehicle : System.Web.UI.Page
+    public partial class SoldVehicles : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        	Session["Vehicle"] = Vehicle.Find(int.Parse(Request["id"]));
-					VehicleNameLabel.Text = ((Vehicle)Session["Vehicle"]).ToString();
+
             Employee user = (Employee)Session["User"];
             if (user != null)
             {
                 Label1.Text = user.Username;
-            	if(!IsPostBack)
-								UpdateDataBindings();
+            	VehiclesRepeater.DataSource = user.Location.GetSoldVehicles();
+                VehiclesRepeater.DataBind();
             }
             else
             {
                 Response.Redirect("Default.aspx");
             }
         }
-
-			private void UpdateDataBindings()
-			{
-				Employee user = (Employee) Session["User"];
-				SalespersonList.DataSource = user.Location.GetEmployees();
-				SalespersonList.DataTextField = "Username";
-				SalespersonList.DataValueField = "ID";
-				SalespersonList.DataBind();
-			}
-
         private void Logout()
         {
             Session["User"] = null;
@@ -56,18 +45,5 @@ namespace AutoTune
         {
             Response.Redirect("Messaging.aspx");
         }
-
-				protected void SellButton_Click(object sender, EventArgs e)
-				{
-					Vehicle vehicle = (Vehicle)Session["Vehicle"];
-					Employee user = (Employee) Session["User"];
-					Employee salesperson = Employee.Find(int.Parse(SalespersonList.SelectedItem.Value));
-					double price = double.Parse(PriceTextBox.Text);
-					string info = CustomerTextBox.Text;
-
-					user.SellVehicle(vehicle, salesperson, info, price);
-
-					Response.Redirect("ManagerVehicle.aspx");
-				}
     }
 }

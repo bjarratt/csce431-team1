@@ -18,11 +18,19 @@ namespace AutoTune
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			Dealership dealership = Dealership.Find(int.Parse(Request["id"]));
-			NameTextBox.Text = dealership.Name;
-			LocationTextBox.Text = dealership.Location;
-			EmailTextBox.Text = dealership.Email;
-			PhoneTextBox.Text = dealership.Phone;
+			if((Employee)Session["User"] == null)
+				Response.Redirect("Default.aspx");
+			else
+				Label1.Text = ((Employee) Session["User"]).Username;
+
+			if (!IsPostBack)
+			{
+				Dealership dealership = Dealership.Find(int.Parse(Request["id"]));
+				NameTextBox.Text = dealership.Name;
+				LocationTextBox.Text = dealership.Location;
+				EmailTextBox.Text = dealership.Email;
+				PhoneTextBox.Text = dealership.Phone;
+			}
 		}
 
 		protected void SubmitButton_Click(object sender, EventArgs e)
@@ -33,6 +41,13 @@ namespace AutoTune
 			dealership.Email = EmailTextBox.Text;
 			dealership.Phone = PhoneTextBox.Text;
 			dealership.Commit();
+			Response.Redirect("AdminDealer.aspx");
+		}
+
+		protected void Logout_Click(object sender, EventArgs e)
+		{
+			Session["User"] = null;
+			Response.Redirect("Default.aspx");
 		}
 	}
 }

@@ -128,7 +128,7 @@ namespace AutoTune.Models
 		{
 			IEnumerable<Role> roles = GetRoles();
 			foreach(Role role in roles)
-				if(role.ID == 2)
+				if ((int)role["RoleTypeID"] == 2)
 					return true;
 			return false;
 		}
@@ -137,7 +137,7 @@ namespace AutoTune.Models
 		{
 			IEnumerable<Role> roles = GetRoles();
 			foreach(Role role in roles)
-				if(role.ID == 3)
+				if((int)role["RoleTypeID"] == 3)
 					return true;
 			return false;
 		}
@@ -146,7 +146,7 @@ namespace AutoTune.Models
 		{
 			IEnumerable<Role> roles = GetRoles();
 			foreach (Role role in roles)
-				if (role.ID == 1)
+				if ((int)role["RoleTypeID"] == 1)
 					return true;
 			return false;
 		}

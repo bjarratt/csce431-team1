@@ -11,7 +11,7 @@
 namespace AutoTune {
     
     
-    public partial class WebForm6 {
+    public partial class SellVehicle {
         
         /// <summary>
         /// LinkButton2 control.
@@ -59,6 +59,15 @@ namespace AutoTune {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
         
         /// <summary>
+        /// VehicleNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label VehicleNameLabel;
+        
+        /// <summary>
         /// HyperLink1 control.
         /// </summary>
         /// <remarks>
@@ -68,21 +77,30 @@ namespace AutoTune {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
         
         /// <summary>
-        /// VehiclesRepeater control.
+        /// SalespersonList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater VehiclesRepeater;
+        protected global::System.Web.UI.WebControls.DropDownList SalespersonList;
         
         /// <summary>
-        /// HyperLink2 control.
+        /// PriceTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.TextBox PriceTextBox;
+        
+        /// <summary>
+        /// SellButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SellButton;
     }
 }

@@ -40,7 +40,7 @@ Width="70px">Messaging</asp:LinkButton>
 			</HeaderTemplate>
 			<ItemTemplate>
 				<tr>
-					<td colspan="2"><h2><%# ((Vehicle)Container.DataItem).ToString() %></h2></td>
+					<td colspan="2"><h2><%# ((Vehicle)Container.DataItem).ToString() %></h2> <a href="SellVehicle.aspx?id=<%# ((Vehicle)Container.DataItem).ID %>">Sell</a></td>
 				</tr>
 				<tr>
 					<td><img alt="<%# ((Vehicle)Container.DataItem).ToString() %>" src="images/Vehicles/<%# ((Vehicle)Container.DataItem).ImageUri %>" width="256" /></td>

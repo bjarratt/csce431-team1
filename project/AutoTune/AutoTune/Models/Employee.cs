@@ -114,11 +114,11 @@ namespace AutoTune.Models
 		{
 			Employee employee = FindByUsername(username);
 			if (employee == null)
-				throw new DatabaseException(string.Format("User '{0}' does not exist", username));
+				return null;
 
 			string hash = Hash(password + employee.Salt);
 			if (hash != employee.PasswordHash)
-				throw new DatabaseException("Invalid username or password");
+				return null;
 
 			return employee;
 		}

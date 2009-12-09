@@ -28,5 +28,13 @@ namespace AutoTune.Models
 		{
 			return FindChildren("Vehicles", () => new Vehicle(), "DealershipID").Cast<Vehicle>();
 		}
+
+		public static Dealership Find(int? id)
+		{
+			if (id == null)
+				return null;
+			else
+				return (Dealership)Find("Dealerships", () => new Dealership(), new Hashtable {{"ID", id}}).First();
+		}
 	}
 }

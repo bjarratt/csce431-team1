@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AutoTune.Models
@@ -28,7 +29,7 @@ namespace AutoTune.Models
 
 		public string Make
 		{
-			get { return (string)this["make"]; }
+			get { return (string)this["Make"]; }
 			set { this["Make"] = value; }
 		}
 
@@ -46,19 +47,20 @@ namespace AutoTune.Models
 
 		public double BookValue
 		{
-			get { return (double)this["BookValue"]; }
+			get {
+				Type temp = this["BookValue"].GetType(); return (System.Single)this["BookValue"]; }
 			set { this["BookValue"] = value; }
 		}
 
 		public double BaseValue
 		{
-			get { return (double)this["BaseValue"]; }
+			get { return (System.Single)this["BaseValue"]; }
 			set { this["BaseValue"] = value; }
 		}
 
 		public double DiscountValue
 		{
-			get { return (double)this["DiscountValue"]; }
+			get { return (System.Single)this["DiscountValue"]; }
 			set { this["DiscountValue"] = value; }
 		}
 
@@ -74,6 +76,11 @@ namespace AutoTune.Models
 		public static IEnumerable<Vehicle> FindAll()
 		{
 			return Find("Vehicles", () => new Vehicle(), null).Cast<Vehicle>();
+		}
+
+		public override string ToString()
+		{
+			return string.Format("{0} {1} {2}", Year, Make, Model);
 		}
 	}
 }

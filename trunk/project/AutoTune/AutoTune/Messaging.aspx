@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Messaging.aspx.cs" Inherits="AutoTune.WebForm2" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Messaging.aspx.cs" Inherits="AutoTune.WebForm2" Title="Messaging" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" runat="server">
 Messaging
 </asp:Content>
@@ -51,6 +51,8 @@ Width="70px">Messaging</asp:LinkButton></li>
     <asp:Button ID="Logout_Button" runat="server" onclick="Logout_Click" 
         Text="Logout" />
 <br />
+    <asp:Panel ID="Panel2" runat="server" Height="29px">
+    </asp:Panel>
 <asp:HyperLink ID="HyperLink4" runat="server" 
             NavigateUrl="ChangePassword.aspx">Change Password</asp:HyperLink>
 <br />

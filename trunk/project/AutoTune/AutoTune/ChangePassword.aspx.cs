@@ -14,13 +14,16 @@ using AutoTune.Models;
 
 namespace AutoTune
 {
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class ChangePassword : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             Employee user = (Employee)Session["User"];
-            if (user == null)
+            if (user != null)
+                Label1.Text = user.Username;
+            else
                 Response.Redirect("AccessDenied.aspx");
+
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
@@ -41,6 +44,20 @@ namespace AutoTune
                 user.Password = newPW;
                 user.Commit();
             }
+        }
+        private void Logout()
+        {
+            Session["User"] = null;
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
+        protected void MessageClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Messaging.aspx");
         }
     }
 }

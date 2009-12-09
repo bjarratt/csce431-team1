@@ -11,7 +11,7 @@
 namespace AutoTune {
     
     
-    public partial class WebForm3 {
+    public partial class DealerEdit {
         
         /// <summary>
         /// NameTextBox control.

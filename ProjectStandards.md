@@ -1,0 +1,113 @@
+# Introduction #
+
+Here is a list of the standards to which our team will aspire to uphold for the duration of our project.
+
+
+# Details #
+
+## Coding Conventions ##
+
+### Commenting ###
+
+  * _All_ methods and classes shall use the default documentation convention provided by each programming language
+
+```
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dummy"></param>
+/// <returns></returns>
+public int dummy_method(int dummy)
+{
+	
+   ...
+
+   code
+
+   ...
+
+}
+```
+
+  * If there is no default documentation then each method shall have a commented block directly below the method name describing the functionality of the method
+
+```
+public int dummy_method(int dummy)
+{
+    /* This method counts the total number of dummies
+     * and returns the number of ...
+     */
+     ...
+
+     code
+
+     ...
+
+}
+```
+### Variable Names ###
+  * Variable names should match the coding convention for each website
+
+**Java** - `myVariable`
+
+**C++** - `my_variable`
+
+### Tabbing ###
+  * Tabs should be composed of spaces for uniform displaying across platforms
+  * Code that enters into a different scope should have differing tab levels
+
+```
+public int dummy_method(int dummy)
+{
+    for (int c = 0; c < 999; c++)
+    {
+        ...
+	code
+	...
+    }
+
+}
+```
+
+### Bracketing ###
+
+  * Open brackets should line up vertically with their corresponding close bracket
+```
+public int dummy_method(int dummy)
+{
+    for (int c = 0; c < 999; c++)
+    {
+        ...
+	code
+	...
+    }
+
+}
+```
+
+
+---
+
+## Bugs ##
+
+  * Bugs should be submitted to the using the default format on Google Code
+
+```
+Reported by ironize, Sep 30, 2009
+
+What steps will reproduce the problem?
+1. Google 'Autotune'
+2. Nothing appears!!!
+3. (other than some car audio companies)
+
+What is the expected output? What do you see instead?
+im triing 2 find ur company!!
+
+What version of the product are you using? On what operating system?
+IE6, of course!!!
+
+Please provide any additional information below.
+
+WERE IS UR WEB PAGES?!??!?!?
+
+```

@@ -1,0 +1,32 @@
+# Introduction #
+
+Here is a list of all the requirements that our project should satisfy by the end of the semester
+
+
+# Details #
+
+  * provide a salesperson with various prices for the car, such as the price we advertise, the price after discount, or the lowest price they’re authorized to sell the car
+
+  * mark the car as Pending Sale and the manager could sign off on the price
+
+  * manager would remove the car from inventory at the lot
+
+  * manager needs to be able to enter new cars into the software
+
+  * manager should be able to select common features such as the make, model, condition of car
+
+  * Admin should be able to add new dealerships and new employees, as well as new makes and models
+
+  * When a dealership is removed, be able to list past employees in a "Limbo" list
+
+  * have all dealerships using the same database system
+
+  * Allow shipping and trading cars between dealership.  Have a manager or admin initiate a trade and allow the receiving end to accept or decline
+
+  * Allow other managers or admin to search other dealership's inventory
+
+  * There should be an internal system of messaging other than email
+
+  * Dealerships should be able to sell other types of vehicles such as boats, RV's, motorcycles, etc.
+
+  * Allow employees to have multiple roles at more than one dealership

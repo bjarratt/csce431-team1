@@ -1,0 +1,101 @@
+# Use Cases #
+
+## 1. List Vehicles ##
+Actors: Admin, Manager, Salesperson<br />
+A user can view a complete list of sellable vehicles at their dealership.
+
+## 2. Add Vehicle to Inventory ##
+Actors: Manager<br />
+A manager can add a vehicle to inventory at his/her dealership.
+
+## 3. Remove Vehicle from Inventory ##
+Actors: Manager<br />
+A manager can remove a vehicle from inventory at his/her dealership.
+
+## 4. View Individual Vehicle Details ##
+Actors: Salesperson, Manager<br />
+Users can view details (year, make, model, VIN, etc) of a specific vehicle at any dealership.
+
+## 5. Edit Vehicle Details ##
+Actors: Manager<br />
+The manager of a dealership can edit the details of a vehicle in his/her dealership.
+
+## 6. Send Message ##
+Actors: Admin, Manager, Salesperson<br />
+Any employee can send a text-only message to selected other employees.
+
+## 7. View Received Messages ##
+Actors: Admin, Manager, Salesperson<br />
+Employees can view messages sent to them, both as a list of messages and individually.
+
+## 8. Mark Received Message as Read ##
+Actors: Admin, Manager, Salesperson<br />
+Rather than deleting messages, employees can mark messages as 'read', removing them from the default message listing view, which only shows unread messages.
+
+## 9. Mark Vehicle as Pending Sale ##
+Actors: Salesperson<br />
+Salespeople can mark a vehicle as a Pending Sale, along with the negotiated price, taking it out of sellable inventory temporarily.
+
+## 10. Finalize Vehicle Sale ##
+Actors: Manager<br />
+The manager of a dealership can finalize any Pending Sale at his/her dealership, automatically removing the vehicle from inventory.
+
+## 11. Add Dealership to System ##
+Actors: Admin<br />
+A system administrator can add dealerships to the database.
+
+## 12. Remove Dealership from System ##
+Actors: Admin<br />
+A system administrator can close a dealership if that dealership does not have any employees (through Roles; check DB Schema).
+
+## 13. Edit Dealership Details ##
+Actors: Admin<br />
+A system administrator can change the details of a dealership (address, description, website...).
+
+## 14. Add Employee ##
+Actors: Admin<br />
+A system administrator can add employees to the database.
+
+## 15. Assign Employee to Role ##
+Actors: Admin<br />
+A system administrator can assign an existing employee to a specific position in an existing dealership.
+
+## 16. Request Employee Assignment ##
+Actors: Manager<br />
+The manager of a dealership can request that an Employee be assigned to a specific position at his/her dealership.
+
+## 17. View Assignment Requests ##
+Actors: Admin, Manager<br />
+Admins can view all pending assignment requests and accept/deny them. Managers can view all of their pending assignment requests and potentially cancel them.
+
+## 18. Remove Employee Assignment ##
+Actors: Admin<br />
+A system administrator can remove an employee's assignment. This assignment remains in the database as a Role, but is marked as ended. Employees with no active roles are considered 'On Leave.'
+
+## 19. Initiate Vehicle Trade ##
+Actors: Manager<br />
+The manager of a dealership can initiate a vehicle trade with another dealership by selecting the other participating dealership and the vehicles he/she wishes to trade with that dealership.
+
+## 20. Accept Vehicle Trade ##
+Actors: Manager<br />
+The manager of a dealership with which a trade has been initiated can accept the trade, which automatically transfers inventory between the dealerships.
+
+## 21. Reject Vehicle Trade ##
+Actors: Manager<br />
+The manager of a dealership with which a trade has been initiated can reject the trade.
+
+## 24. Login ##
+Actors: Employee<br />
+Employees can login to the system by entering their username and password.
+
+## 23. Change Password ##
+Actors: Employee<br />
+Any employee can change their own password.
+
+## 24. Assign Temporary Password ##
+Actors: Admin<br />
+An admin can assign an employee a temporary password, so that employees can reset forgotten passwords.
+
+## 25. Reset Password ##
+Actors: Employee<br />
+An employee with a temporary password can set their permanent password (simultaneously removing the temporary password).

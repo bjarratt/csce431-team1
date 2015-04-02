@@ -1,0 +1,9 @@
+# Introduction #
+
+Class DatabaseModel provides functionality for reading and writing to the MySQL database, and is implemented as a primitive ORM.
+
+# Details #
+
+Data is manipulated by making changes to instances of DatabaseModel inheritors, then calling Commit(), which saves those changes to the database. DatabaseModel also provides an Update() method, to reload instance fields from the database (overwriting any changes that have been made). Most inheritors are expected to provide various Find(...) methods that will return either a list of instances or a single instance.
+
+All fields in DatabaseModel instances are available through the Hashtable-like square brackets notation; the key is the name of the database column as a string (for example, 'employee["Username"]'). DatabaseModel inheritors can also provide accessors for these fields for easier use ('employee.Username'). Note that "ID" and "Added" are protected fields (used internally by DatabaseModel) and cannot be altered by the user.
